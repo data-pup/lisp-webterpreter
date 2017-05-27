@@ -6,7 +6,7 @@ class AppHeader extends Component {
   render() {
     return (
         <div className="App-header">
-            <h2 classname="App-title">Welcome to my LISP Interpreter!</h2>
+            <h2 className="App-title">Welcome to my LISP Interpreter!</h2>
             <div className="App-logo-wrapper">
             <img src={logo} className="App-logo" alt="logo" />
             </div>
