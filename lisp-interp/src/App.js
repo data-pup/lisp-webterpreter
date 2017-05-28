@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import AppHeader from './components/AppHeader/AppHeader';
+import LispInterpreterWindow from './components/LispInterpreterWindow/LispInterpreterWindow';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <AppHeader />
+      <div>
+        <AppHeader />
+        <LispInterpreterWindow />
+      </div>
     );
   }
 }

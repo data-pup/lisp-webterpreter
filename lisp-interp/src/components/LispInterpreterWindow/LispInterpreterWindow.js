@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Nav, NavItem, Row, Tab } from 'react-bootstrap'
-import './LispInterpreter.css';
+import './LispInterpreterWindow.css';
 
-class LispInterpreter extends Component {
+class LispInterpreterWindow extends Component {
     render() {
         return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -33,4 +33,4 @@ class LispInterpreter extends Component {
     }
 }
 
-export default LispInterpreter;
+export default LispInterpreterWindow;
