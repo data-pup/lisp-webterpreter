@@ -1,13 +1,13 @@
 .App-interpreter-window {
     background-color: #222;
-    min-height: 70%;
+    min-height: 50%;
+    max-height: 80%;
     padding: 20px 10px 10px 10px;
     border-top: solid 2px #FFF;
     margin-top: 10px;
 }
 
 .App-interpreter-nav-wrapper {
-    min-height: 150px;
     border: solid 1px #A55FE0;
     padding: 5px 0px 15px 0px;
 }
