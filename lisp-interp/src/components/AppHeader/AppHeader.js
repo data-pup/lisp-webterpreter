@@ -5,7 +5,7 @@ import logo from './logo.svg';
 class AppHeader extends Component {
   render() {
     return (
-        <div className="App-header">
+        <div className="App-header section">
             <h2 className="App-title">Welcome to my LISP Interpreter!</h2>
             <div className="App-logo-wrapper">
             <img src={logo} className="App-logo" alt="logo" />

@@ -1,13 +1,19 @@
-body, html {
-  height: 100%;
-}
-
 #root {
     height: inherit;
 }
 
 .App {
-    background-color: #A55FE0;
+    background-color: #3C125E;
     height: inherit;
     padding: 15px 2.5% 0px 2.5%;
+}
+
+/* Reusable CSS Classes */
+
+.section {
+    background-color: #222;
+    border-top: solid 2px #FFF;
+    border-bottom: solid 1px #FFF;
+    margin-bottom: 20px;
+    box-shadow: 5px 6px 8px -1px rgba(0,0,0,0.52);
 }

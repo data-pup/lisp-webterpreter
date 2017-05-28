@@ -1,13 +1,30 @@
 .App-interpreter-window {
     background-color: #222;
+    min-height: 70%;
     padding: 20px 10px 10px 10px;
     border-top: solid 2px #FFF;
     margin-top: 10px;
 }
 
-.app-interpreter-nav-item {
+.App-interpreter-nav-wrapper {
+    min-height: 150px;
+    border: solid 1px #A55FE0;
+    padding: 5px 0px 15px 0px;
+}
+
+.App-interpreter-nav {
+    height: inherit;
+}
+
+.App-interpreter-nav-item>a {
+    background-color: #FFF;
+    color: #222;
+}
+
+.App-interpreter-nav-item>a:hover {
+    background-color: #999;
     color: #A55FE0;
 }
-.app-interpreter-nav-item:active {
-    background-color: #222;
-}
+
+/*.nav-tabs>li.active>a:focus
+.nav-tabs>li.active>a:hover*/
