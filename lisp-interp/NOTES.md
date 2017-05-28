@@ -1,4 +1,4 @@
-## Color Scheme
+## Site Color Scheme
 
 Text: White #FFF
 SubHeader Gray: #DDD
