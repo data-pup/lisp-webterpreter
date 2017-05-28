@@ -8,7 +8,7 @@ class LispInterpreterWindow extends Component {
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row className="clearfix">
             <Col sm={4}>
-                <Nav bsStyle="pills" stacked>
+                <Nav bsStyle="tabs" stacked>
                 <NavItem eventKey="first">
                     Tab 1
                 </NavItem>

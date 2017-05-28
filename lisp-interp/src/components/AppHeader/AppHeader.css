@@ -12,6 +12,18 @@
 .App-intro {
   color: #CCC;
 }
+
+.App-logo-wrapper {
+  height: 60px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
