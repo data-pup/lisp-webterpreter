@@ -1,0 +1,13 @@
+body, html {
+  height: 100%;
+}
+
+#root {
+    height: inherit;
+}
+
+.App {
+    background-color: #A55FE0;
+    height: inherit;
+    padding: 15px 2.5% 0px 2.5%;
+}

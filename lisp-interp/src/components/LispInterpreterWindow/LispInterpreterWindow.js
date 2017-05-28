@@ -5,30 +5,32 @@ import './LispInterpreterWindow.css';
 class LispInterpreterWindow extends Component {
     render() {
         return (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-            <Row className="clearfix">
-            <Col sm={4}>
-                <Nav bsStyle="tabs" stacked>
-                <NavItem eventKey="first">
-                    Tab 1
-                </NavItem>
-                <NavItem eventKey="second">
-                    Tab 2
-                </NavItem>
-                </Nav>
-            </Col>
-            <Col sm={8}>
-                <Tab.Content animation>
-                <Tab.Pane eventKey="first">
-                    Tab 1 content
-                </Tab.Pane>
-                <Tab.Pane eventKey="second">
-                    Tab 2 content
-                </Tab.Pane>
-                </Tab.Content>
-            </Col>
-            </Row>
-        </Tab.Container>
+            <div className="App-interpreter-window">
+                <Tab.Container id="App-interpreter-nav" defaultActiveKey="first">
+                    <Row className="clearfix">
+                    <Col sm={2}>
+                        <Nav bsStyle="tabs" stacked>
+                        <NavItem className="App-interpreter-nav-item" eventKey="first">
+                            Tab 1
+                        </NavItem>
+                        <NavItem className="App-interpreter-nav-item" eventKey="second">
+                            Tab 2
+                        </NavItem>
+                        </Nav>
+                    </Col>
+                    <Col sm={10}>
+                        <Tab.Content animation>
+                        <Tab.Pane eventKey="first">
+                            Tab 1 content
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="second">
+                            Tab 2 content
+                        </Tab.Pane>
+                        </Tab.Content>
+                    </Col>
+                    </Row>
+                </Tab.Container>
+            </div>
         );
     }
 }

@@ -1,0 +1,13 @@
+.App-interpreter-window {
+    background-color: #222;
+    padding: 20px 10px 10px 10px;
+    border-top: solid 2px #FFF;
+    margin-top: 10px;
+}
+
+.app-interpreter-nav-item {
+    color: #A55FE0;
+}
+.app-interpreter-nav-item:active {
+    background-color: #222;
+}
