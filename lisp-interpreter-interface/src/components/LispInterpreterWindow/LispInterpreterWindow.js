@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Nav, NavItem, Row, Tab } from 'react-bootstrap'
+import DebugWindow from './DebugWindow/DebugWindow.js'
 import './LispInterpreterWindow.css';
 
 class LispInterpreterWindow extends Component {
@@ -24,7 +25,7 @@ class LispInterpreterWindow extends Component {
                             Tab 1 content
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
-                            Tab 2 content
+                            <DebugWindow />
                         </Tab.Pane>
                         </Tab.Content>
                     </Col>
