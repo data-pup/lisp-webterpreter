@@ -4,6 +4,12 @@ import DebugWindow from './DebugWindow/DebugWindow.js'
 import './LispInterpreterWindow.css';
 
 class LispInterpreterWindow extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = props;
+    }
+
     render() {
         return (
             <div className="App-interpreter-wrapper section">
@@ -25,7 +31,7 @@ class LispInterpreterWindow extends Component {
                             Tab 1 content
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
-                            <DebugWindow />
+                            <DebugWindow history={['hello', 'world']}/>
                         </Tab.Pane>
                         </Tab.Content>
                     </Col>
