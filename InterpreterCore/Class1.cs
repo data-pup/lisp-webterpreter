@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace interpreter_core
+namespace InterpreterCore
 {
     public class Class1
     {

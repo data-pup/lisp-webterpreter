@@ -1,13 +1,13 @@
 # LISP Web Interpreter Project
 
-## interpreter-core/
+## InterpreterCore/
 
 This is the core logic module for the interpreter application. This project
 contains code used to generate Abstract Syntax Trees from input strings
 containing LISP expressions. This is the code that the API refers to when
 generating responses.
 
-## test-interpreter-core/
+## InterpreterCore.Tests/
 
 This is an MSTest project, to assert that the interpreter-core module is
 behaving correctly.

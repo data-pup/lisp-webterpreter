@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace test_interpreter_core
+namespace InterpreterCore.Tests
 {
     public class UnitTest1
     {
