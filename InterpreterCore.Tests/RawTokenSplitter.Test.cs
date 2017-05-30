@@ -23,11 +23,21 @@ namespace InterpreterCore.Tests
 
         public void testSimpleExpressionsRawTokens()
         {
-            //
             var testCasesAndAnswers = new Dictionary<String,List<String>>();
             testCasesAndAnswers.Add(
+                "1", new List<String>(){"1"}
+            );
+            testCasesAndAnswers.Add(
+                "(1)", new List<String>(){"(1)"}
+            );
+            testCasesAndAnswers.Add(
                 "(+ 1 2)", new List<String>(){"(+","1","2)"}
-                // "", new List<String>(){""}
+            );
+            testCasesAndAnswers.Add(
+                "(+ 1 2)", new List<String>(){"(+","1","2)"}
+            );
+            testCasesAndAnswers.Add(
+                "\t(+\t1\t2)", new List<String>(){"(+","1","2)"}
             );
             runSplittingTests(testCasesAndAnswers);
         }
@@ -42,10 +52,11 @@ namespace InterpreterCore.Tests
         {
             foreach (var currentTestCase in testCasesAndAnswers)
             {
+                // Get the current test case input, correct output, and real output.
                 string expression = currentTestCase.Key;
                 List<String> expectedResults = currentTestCase.Value;
                 List<String> actualResults = RawTokenSplitter.splitTrimmedExpression(expression);
-                Assert.AreEqual(expectedResults.Count, actualResults.Count);
+                Assert.AreEqual(expectedResults.Count, actualResults.Count); // Check lists are equal size.
                 for (int currentTokenIndex = 0; currentTokenIndex < actualResults.Count; currentTokenIndex++)
                 {
                     var expectedToken = expectedResults[currentTokenIndex];
