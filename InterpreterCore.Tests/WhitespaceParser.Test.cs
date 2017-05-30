@@ -16,7 +16,7 @@ namespace InterpreterCore.Tests
         }
 
         [TestMethod]
-        public void CanBeInstantiated()
+        public void WhitespaceParserCanBeInstantiated()
         {
             var testObject = new WhitespaceParserTest();
         }

@@ -16,7 +16,7 @@ namespace InterpreterCore.Tests
         }
 
         [TestMethod]
-        public void CanBeInstantiated()
+        public void LISPInterpreterCoreCanBeInstantiated()
         {
             var testObject = new LISPInterpreterCore();
         }
