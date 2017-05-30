@@ -9,16 +9,22 @@ namespace InterpreterCore.Tests
     [TestClass]
     public class LISPInterpreterCoreTest
     {
-        private readonly LISPInterpreterCore _InterpreterCore;
+        private readonly LISPInterpreterCore _testInterpreter;
         public LISPInterpreterCoreTest()
         {
-            _InterpreterCore = new LISPInterpreterCore();
+            _testInterpreter = new LISPInterpreterCore();
+        }
+
+        [TestMethod]
+        public void CanBeInstantiated()
+        {
+            var testObject = new LISPInterpreterCore();
         }
 
         [TestMethod]
         public void GreetingWorks()
         {
-            var expectedGreeting = new List<string>(){ "hello", "world" };
+            var expectedGreeting = new List<String>(){ "hello", "world" };
             var greeting = LISPInterpreterCore.Greet();
             Assert.AreEqual(2, greeting.Count);
             for (int currWordIndex = 0; currWordIndex < 2; currWordIndex++)
