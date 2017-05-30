@@ -34,13 +34,7 @@ namespace InterpreterCore.Tests
             testInputsAndAnswers.Add("1  ","1");
             testInputsAndAnswers.Add(" 1 ","1");
             testInputsAndAnswers.Add("  1","1");
-            foreach(var item in testInputsAndAnswers)
-            {
-                var expression = item.Key;
-                var expectedResult = item.Value;
-                var actualResult = WhitespaceParser.trimWhitespace(expression);
-                Assert.AreEqual(expectedResult, actualResult);
-            }
+            runWhitespaceTests(testInputsAndAnswers);
         }
 
         [TestMethod]
@@ -52,22 +46,21 @@ namespace InterpreterCore.Tests
             testInputsAndAnswers.Add("1   1","1 1");
             testInputsAndAnswers.Add("1\t1","1 1");
             testInputsAndAnswers.Add("1\t\t1","1 1");
-            foreach(var item in testInputsAndAnswers)
-            {
-                var expression = item.Key;
-                var expectedResult = item.Value;
-                var actualResult = WhitespaceParser.trimWhitespace(expression);
-                Assert.AreEqual(expectedResult, actualResult);
-            }
+            runWhitespaceTests(testInputsAndAnswers);
         }
 
         [TestMethod]
         public void OtherWhiteSpaceTests()
         {
             var testInputsAndAnswers = new Dictionary<String,String>();
-            testInputsAndAnswers.Add("  \t1 2  3\t\t4 5    ","1 2 3 4 5");
-            testInputsAndAnswers.Add("\t1     2 3\t\t4 5","1 2 3 4 5");
-            testInputsAndAnswers.Add("\t1\t2\t3\t4\t5\t","1 2 3 4 5");
+            testInputsAndAnswers.Add("  \t1 2  3\t\t4 5    ", "1 2 3 4 5");
+            testInputsAndAnswers.Add("\t1     2 3\t\t4 5", "1 2 3 4 5");
+            testInputsAndAnswers.Add("\t1\t2\t3\t4\t5\t", "1 2 3 4 5");
+            runWhitespaceTests(testInputsAndAnswers);
+        }
+
+        private void runWhitespaceTests(Dictionary<String,String> testInputsAndAnswers)
+        {
             foreach(var item in testInputsAndAnswers)
             {
                 var expression = item.Key;

@@ -9,7 +9,10 @@ namespace InterpreterCore
         {
         }
 
-        public static List<String> Greet()
+        /// <summary>
+        /// Pass an array the the client, for debugging purposes.
+        /// </summary>
+        public List<String> Greet()
         {
             return new List<String>(){"hello", "world"};
         }

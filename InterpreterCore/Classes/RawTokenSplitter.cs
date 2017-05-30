@@ -5,13 +5,14 @@ namespace InterpreterCore
 {
     public class RawTokenSplitter
     {
-        private IEnumerable<String> splitTrimmedExpression(string expression)
+        public static List<String> splitTrimmedExpression(string expression)
         {
             if(expression == null)
             {
                 throw new NullReferenceException();
             }
-            return expression.Split(' ');
+            List<String> rawTokens = new List<String>(expression.Split(' '));
+            return rawTokens;
         }
     }
 }
