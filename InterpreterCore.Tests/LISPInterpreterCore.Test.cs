@@ -24,8 +24,9 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void GreetingWorks()
         {
+            var testObject = new LISPInterpreterCore();
             var expectedGreeting = new List<String>(){ "hello", "world" };
-            var greeting = LISPInterpreterCore.Greet();
+            var greeting = testObject.Greet();
             Assert.AreEqual(2, greeting.Count);
             for (int currWordIndex = 0; currWordIndex < 2; currWordIndex++)
             {
