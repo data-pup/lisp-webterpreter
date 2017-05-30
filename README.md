@@ -12,11 +12,11 @@ generating responses.
 This is an MSTest project, to assert that the interpreter-core module is
 behaving correctly.
 
-## lisp-api/
+## ConsoleInterpreter/
 
-This is the client-facing API endpoint that can handle requests containing
-a LISP expression. This is a very light-weight .NET Core WebAPI, that
-will generate a response using interpreter-core.
+This is a .NET Core Console application that references the InterpreterCore
+package. This is an application that depends on the core module itself, rather
+than interacting with it through an API.
 
 ## lisp-interpreter-interface/
 
@@ -24,11 +24,12 @@ This is a single-page web application built with Create React App. This is
 a client-side application that presents an interpreter environment, and sends
 requests to the API when inputs are given.
 
-# Todo
+# Misc. Todo Items
 
-*  Connect the test-interpreter-core project to the interpreter-core module. This should be done in the .csproj file.
-*  Add a reference to interpreter-core in the lisp-api project. Check that the functions can be called from the Controller methods.
 *  Revert the interface npm dependencies to use plain Bootstrap. Lack of JQuery dependency is interesting, but it will be easier to target Bootstrap 3.
-*  Work on the interpreter-core project, work on code to create a flat syntax token list from an input expression.
+*  Build a hello world API. This should be able to echo an expression back to the client.
+*  Rename the API directory to match the camel case naming convention used in the other sub-directories.
 
+### May 29 Notes:
 
+Test bench has been configured, proof of connection & instantiation of core module within console application is working. More work to do tomorrow with regards to splitting syntactically relevant tokens in raw tokens to generate a flat syntax list, before checking for matching parentheses, operand counts, and (eventually) symbols.
