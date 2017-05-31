@@ -9,7 +9,7 @@ namespace InterpreterCore
         /// This method will handle a list of raw token strings, and return
         /// a list of syntax tokens.
         /// </summary>
-        public static List<String> splitRawTokens(List<String> rawTokens)
+        public static List<String> SplitRawTokens(List<String> rawTokens)
         {
             throw new NotImplementedException(); // TEMP
 

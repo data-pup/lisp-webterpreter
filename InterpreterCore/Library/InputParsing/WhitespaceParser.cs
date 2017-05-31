@@ -5,7 +5,7 @@ namespace InterpreterCore
 {
     public class WhitespaceParser
     {
-        public static string trimWhitespace(string expression)
+        public static string TrimWhitespace(string expression)
         {
             if(expression == null) // Check for a null parameter.
             {

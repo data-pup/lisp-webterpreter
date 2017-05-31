@@ -21,7 +21,7 @@ namespace InterpreterCore.Tests
             var testObject = new RawTokenHandler();
         }
 
-        public void testSimpleExpressionsRawTokens()
+        public void TestSimpleExpressionsRawTokens()
         {
             var testCasesAndAnswers = new Dictionary<String,List<String>>();
             testCasesAndAnswers.Add(
@@ -39,7 +39,7 @@ namespace InterpreterCore.Tests
             testCasesAndAnswers.Add(
                 "\t(+\t1\t2)", new List<String>(){"(+","1","2)"}
             );
-            runSplittingTests(testCasesAndAnswers);
+            RunSplittingTests(testCasesAndAnswers);
         }
 
         /// <summary>
@@ -48,14 +48,14 @@ namespace InterpreterCore.Tests
         // passing in a string, and returning a collection of strings. This
         /// method will run a series of tests sequentially.
         /// </summary>
-        private void runSplittingTests(Dictionary<String,List<String>> testCasesAndAnswers)
+        private void RunSplittingTests(Dictionary<String,List<String>> testCasesAndAnswers)
         {
             foreach (var currentTestCase in testCasesAndAnswers)
             {
                 // Get the current test case input, correct output, and real output.
                 string expression = currentTestCase.Key;
                 List<String> expectedResults = currentTestCase.Value;
-                List<String> actualResults = RawTokenHandler.splitTrimmedExpression(expression);
+                List<String> actualResults = RawTokenHandler.SplitTrimmedExpression(expression);
                 Assert.AreEqual(expectedResults.Count, actualResults.Count); // Check lists are equal size.
                 for (int currentTokenIndex = 0; currentTokenIndex < actualResults.Count; currentTokenIndex++)
                 {

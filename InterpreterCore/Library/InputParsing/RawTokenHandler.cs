@@ -10,7 +10,7 @@ namespace InterpreterCore
         /// WhitespaceParser module. This splits the string into a list of
         /// raw tokens, based on whitespace characters in the expression.
         /// <summary>
-        public static List<String> splitTrimmedExpression(string expression)
+        public static List<String> SplitTrimmedExpression(string expression)
         {
             if(expression == null)
             {
