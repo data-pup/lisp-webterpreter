@@ -6,7 +6,7 @@ namespace InterpreterCore
     public class RawTokenSplitter
     {
         /// <summary>
-        /// This will handle a string that has been treated by the
+        /// This method will handle a string that has been treated by the
         /// WhitespaceParser module. This splits the string into a list of
         /// raw tokens, based on whitespace characters in the expression.
         /// <summary>

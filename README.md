@@ -1,5 +1,7 @@
 # LISP Web Interpreter Project
 
+This project is currently a work in progress, building a LISP interpreter.
+
 ## InterpreterCore/
 
 This is the core logic module for the interpreter application. This project
@@ -23,12 +25,6 @@ than interacting with it through an API.
 This is a single-page web application built with Create React App. This is
 a client-side application that presents an interpreter environment, and sends
 requests to the API when inputs are given.
-
-# Misc. Todo Items
-
-*  Revert the interface npm dependencies to use plain Bootstrap. Lack of JQuery dependency is interesting, but it will be easier to target Bootstrap 3.
-*  Build a hello world API. This should be able to echo an expression back to the client.
-*  Rename the API directory to match the camel case naming convention used in the other sub-directories.
 
 ### May 29 Notes:
 
