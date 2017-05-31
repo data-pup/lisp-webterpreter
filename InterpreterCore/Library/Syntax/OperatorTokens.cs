@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace InterpreterCore
 {
-    public class Operators
+    public class OperatorTokens
     {
-        public static readonly List<string> OperatorTokens = new List<string>()
+        public static readonly List<string> Tokens = new List<string>()
         {
             "+", "-", "*", "/", // Arithmetic
             "==", "!=", // Equality Checks
