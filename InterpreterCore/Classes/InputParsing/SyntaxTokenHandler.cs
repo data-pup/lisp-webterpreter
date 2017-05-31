@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace InterpreterCore
 {
-    public class SyntaxTokenSplitter
+    public class SyntaxTokenHandler
     {
         /// <summary>
         /// This method will handle a list of raw token strings, and return
