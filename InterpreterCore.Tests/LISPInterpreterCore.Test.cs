@@ -21,6 +21,11 @@ namespace InterpreterCore.Tests
             var testObject = new LISPInterpreterCore();
         }
 
+        /// <summary>
+        /// This is a test used for development, to ensure that the core
+        /// interpreter module has been successfuly imported. The greeting
+        /// method will return a list of strings, ["hello", "world"]
+        /// </summary>
         [TestMethod]
         public void GreetingWorks()
         {
