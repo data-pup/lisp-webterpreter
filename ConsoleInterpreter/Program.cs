@@ -13,8 +13,10 @@ namespace ConsoleInterpreter
         }
         public static void DevelopmentTest()
         {
-            var testExpression = "(+1(+12)(1))";
-            List<String> result = SyntaxTokenHandler.ParseSingleRawToken(testExpression);
+            // -----------------------------------------------------------------
+            var testExpression = "(+ 1 2 (+ 10))";
+            List<String> rawTokens = RawTokenHandler.SplitTrimmedExpression(testExpression);
+            List<String> result = SyntaxTokenHandler.SplitRawTokens(rawTokens);
             Console.WriteLine("Single Token Parse Results:");
             Console.WriteLine("Input string: {0}", testExpression);
             int tokenCounter = 0;
@@ -23,6 +25,7 @@ namespace ConsoleInterpreter
                 Console.WriteLine("Token #{0}: {1}", tokenCounter, token);
                 tokenCounter++;
             }
+            // -----------------------------------------------------------------
         }
         public static void GreetCoreModule()
         {

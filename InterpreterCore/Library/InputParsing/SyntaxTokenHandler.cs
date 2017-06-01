@@ -13,17 +13,17 @@ namespace InterpreterCore
         /// </summary>
         public static List<String> SplitRawTokens(List<String> rawTokens)
         {
-            throw new NotImplementedException(); // TEMP
-            // if(rawTokens == null)
-            // {
-            //     throw new NullReferenceException();
-            // }
-            // // Initialize a new string list, to store tokens.
-            // var syntaxTokens = new List<String>();
-
-            // TODO: Handle syntax tokens...
-
-            // return syntaxTokens;
+            if(rawTokens == null)
+            {
+                throw new NullReferenceException();
+            }
+            // Initialize a new string list, to store tokens.
+            var syntaxTokens = new List<String>();
+            foreach(var currentRawToken in rawTokens)
+            {
+                syntaxTokens.AddRange(ParseSingleRawToken(currentRawToken));
+            }
+            return syntaxTokens;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace InterpreterCore
                 return new List<String>(){rawToken};
             }
             var syntaxTokens = new List<String>(); // The list we'll return.
-            int previousTokenStartingIndex = 0;
+            int previousTokenStartIndex = 0;
             for (int currentCharIndex = 0; currentCharIndex < rawToken.Length;
                                            currentCharIndex++)
             {   // Iterate through the token, looking for reserved characters.
@@ -49,23 +49,35 @@ namespace InterpreterCore
                 if(ReservedCharacters.Characters.Contains(currentCharacter)
                     || OperatorCharacters.Tokens.Contains(currentCharacter))
                 {   // Handle a reserved character if identified.
-                    if(previousTokenStartingIndex == currentCharIndex)
-                    {   // No previous token exists.
-                        syntaxTokens.Add(currentCharacter.ToString());
-                    }
-                    else
-                    {
-                        int previousTokenLength = currentCharIndex - previousTokenStartingIndex;
-                        string previousToken = rawToken.Substring(previousTokenStartingIndex,
-                                                                  previousTokenLength);
+                    if(previousTokenStartIndex != currentCharIndex)
+                    {   // Identify the previous token prior to this token.
+                        string previousToken = GetSyntaxTokenSubstring(rawToken,
+                            previousTokenStartIndex, currentCharIndex);
                         syntaxTokens.Add(previousToken);
-                        syntaxTokens.Add(currentCharacter.ToString());
                     }
-                    previousTokenStartingIndex++;
+                    // Add the current special character to the list.
+                    syntaxTokens.Add(currentCharacter.ToString());
+                    previousTokenStartIndex = currentCharIndex + 1;
                 }
             }
-
+            // If there were trailing characters that were not identified,
+            // add these to the list of syntax tokens before returning.
+            if(previousTokenStartIndex < rawToken.Length)
+            {   // Identify the previous token prior to this token.
+                string finalToken = GetSyntaxTokenSubstring(rawToken,
+                    previousTokenStartIndex, rawToken.Length);
+                syntaxTokens.Add(finalToken);
+            }
             return syntaxTokens;
+        }
+
+        private static string GetSyntaxTokenSubstring(string rawToken,
+                                                      int tokenStartIndex,
+                                                      int tokenEndIndex)
+        {
+            int tokenLength = tokenEndIndex - tokenStartIndex;
+            string token = rawToken.Substring(tokenStartIndex, tokenLength);
+            return token;
         }
     }
 }
