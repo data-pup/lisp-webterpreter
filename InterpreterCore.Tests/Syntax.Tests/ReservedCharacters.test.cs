@@ -12,13 +12,13 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void CanInstantiateReservedCharacters()
         {
-            var testObject = ReservedCharacters.Tokens;
+            var testObject = ReservedCharacters.Characters;
         }
         [TestMethod]
         public void SameNumberOfReservedCharacters()
         {
-            var reservedTokens = ReservedCharacters.Tokens;
-            var expectedToken = new List<String>(){"(", ")"};
+            var reservedTokens = ReservedCharacters.Characters;
+            var expectedToken = new SortedSet<char>(){'(', ')'};
             Assert.AreEqual(reservedTokens.Count, expectedToken.Count);
         }
     }

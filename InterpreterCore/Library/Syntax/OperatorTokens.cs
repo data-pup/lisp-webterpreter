@@ -3,12 +3,11 @@ using System.Collections.Generic;
 
 namespace InterpreterCore
 {
-    public class OperatorTokens
+    public class OperatorCharacters
     {
-        public static readonly List<string> Tokens = new List<string>()
+        public static readonly SortedSet<char> Tokens = new SortedSet<char>()
         {
-            "+", "-", "*", "/", // Arithmetic
-            "==", "!=", // Equality Checks
+            '+', '-', '*', '/',
         };
     }
 }

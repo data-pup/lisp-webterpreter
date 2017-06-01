@@ -6,21 +6,64 @@ namespace InterpreterCore
     public class SyntaxTokenHandler
     {
         /// <summary>
-        /// This method will handle a list of raw token strings, and return
-        /// a list of syntax tokens.
+        /// This method will parse a list of raw token strings, and return
+        /// a list of syntax tokens. Split reserved characters in the raw
+        /// token into separate syntax tokens.
+        /// Example: ['(+', '1)'] => ['(', '+', '1', ')']
         /// </summary>
         public static List<String> SplitRawTokens(List<String> rawTokens)
         {
             throw new NotImplementedException(); // TEMP
+            // if(rawTokens == null)
+            // {
+            //     throw new NullReferenceException();
+            // }
+            // // Initialize a new string list, to store tokens.
+            // var syntaxTokens = new List<String>();
 
-            if(rawTokens == null)
+            // TODO: Handle syntax tokens...
+
+            // return syntaxTokens;
+        }
+
+        /// <summary>
+        /// This method will handle splitting an individual raw token into
+        /// a list of syntax tokens. If the raw token is an exact match with
+        /// </summary>
+        public static List<String> ParseSingleRawToken(string rawToken)
+        {
+            if(rawToken == null)
             {
                 throw new NullReferenceException();
             }
-            // Initialize a new string list, to store tokens.
-            var syntaxTokens = new List<String>();
-
-            // TODO: Handle syntax tokens.
+            if(rawToken.Length == 1)
+            {
+                return new List<String>(){rawToken};
+            }
+            var syntaxTokens = new List<String>(); // The list we'll return.
+            int previousTokenStartingIndex = 0;
+            for (int currentCharIndex = 0; currentCharIndex < rawToken.Length;
+                                           currentCharIndex++)
+            {   // Iterate through the token, looking for reserved characters.
+                var currentCharacter = rawToken[currentCharIndex];
+                if(ReservedCharacters.Characters.Contains(currentCharacter)
+                    || OperatorCharacters.Tokens.Contains(currentCharacter))
+                {   // Handle a reserved character if identified.
+                    if(previousTokenStartingIndex == currentCharIndex)
+                    {   // No previous token exists.
+                        syntaxTokens.Add(currentCharacter.ToString());
+                    }
+                    else
+                    {
+                        int previousTokenLength = currentCharIndex - previousTokenStartingIndex;
+                        string previousToken = rawToken.Substring(previousTokenStartingIndex,
+                                                                  previousTokenLength);
+                        syntaxTokens.Add(previousToken);
+                        syntaxTokens.Add(currentCharacter.ToString());
+                    }
+                    previousTokenStartingIndex++;
+                }
+            }
 
             return syntaxTokens;
         }

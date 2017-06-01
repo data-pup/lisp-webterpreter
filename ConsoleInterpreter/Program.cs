@@ -9,11 +9,24 @@ namespace ConsoleInterpreter
         static void Main(string[] args)
         {
             Console.WriteLine("Initializing LISP Interpreter Core Module...");
-            LISPInterpreterCore core = new LISPInterpreterCore();
-            GreetCoreModule(core);
+            DevelopmentTest();
         }
-        static void GreetCoreModule(LISPInterpreterCore coreModule)
+        public static void DevelopmentTest()
         {
+            var testExpression = "(+12)";
+            List<String> result = SyntaxTokenHandler.ParseSingleRawToken(testExpression);
+            Console.WriteLine("Single Token Parse Results:");
+            Console.WriteLine("Input string: {0}", testExpression);
+            int tokenCounter = 0;
+            foreach(var token in result)
+            {
+                Console.WriteLine("Token #{0}: {1}", tokenCounter, token);
+                tokenCounter++;
+            }
+        }
+        public static void GreetCoreModule()
+        {
+            LISPInterpreterCore coreModule = new LISPInterpreterCore();
             Console.WriteLine("Requesting a greeting...");
             List<String> response = coreModule.Greet();
             Console.WriteLine("Received the following greeting:");

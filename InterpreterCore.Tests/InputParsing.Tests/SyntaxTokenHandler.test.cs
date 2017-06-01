@@ -1,4 +1,3 @@
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -16,9 +15,19 @@ namespace InterpreterCore.Tests
             _SyntaxTokenHandler = new SyntaxTokenHandler();
         }
 
+        [TestMethod]
         public void SyntaxTokenHandlerCanBeInstantiated()
         {
             var testObject = new SyntaxTokenHandler();
+        }
+
+        [TestMethod]
+        public void SyntaxTokenHandlerSplitsParenthesesAndPlus()
+        {
+            var testExpression = "(+";
+            var expectedResult = new List<String>(){"(", "+"};
+            List<String> actualResult = SyntaxTokenHandler.ParseSingleRawToken(testExpression);
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }

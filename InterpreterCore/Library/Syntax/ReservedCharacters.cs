@@ -5,9 +5,9 @@ namespace InterpreterCore
 {
     public class ReservedCharacters
     {
-        public static readonly List<string> Tokens = new List<string>()
+        public static readonly SortedSet<char> Characters = new SortedSet<char>()
         {
-            "(", ")"
+            '(', ')'
         };
     }
 }
