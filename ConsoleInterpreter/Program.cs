@@ -13,7 +13,7 @@ namespace ConsoleInterpreter
         }
         public static void DevelopmentTest()
         {
-            var testExpression = "(+12)";
+            var testExpression = "(+1(+12)(1))";
             List<String> result = SyntaxTokenHandler.ParseSingleRawToken(testExpression);
             Console.WriteLine("Single Token Parse Results:");
             Console.WriteLine("Input string: {0}", testExpression);
