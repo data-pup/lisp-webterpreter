@@ -15,8 +15,8 @@ namespace ConsoleInterpreter
         {
             // -----------------------------------------------------------------
             var testExpression = "(+ 1 2 (+ 10))";
-            List<String> rawTokens = RawTokenHandler.SplitTrimmedExpression(testExpression);
-            List<String> result = SyntaxTokenHandler.SplitRawTokens(rawTokens);
+            List<String> rawTokens = RawTokenParser.SplitTrimmedExpression(testExpression);
+            List<String> result = SyntaxTokenParser.SplitRawTokens(rawTokens);
             Console.WriteLine("Single Token Parse Results:");
             Console.WriteLine("Input string: {0}", testExpression);
             int tokenCounter = 0;

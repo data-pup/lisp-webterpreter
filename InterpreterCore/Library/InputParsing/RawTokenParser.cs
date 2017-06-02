@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace InterpreterCore
 {
-    public class RawTokenHandler
+    public class RawTokenParser
     {
         /// <summary>
         /// This method will handle a string that has been treated by the

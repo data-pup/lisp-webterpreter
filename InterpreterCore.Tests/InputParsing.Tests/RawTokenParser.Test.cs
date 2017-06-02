@@ -7,18 +7,18 @@ using InterpreterCore;
 namespace InterpreterCore.Tests
 {
     [TestClass]
-    public class RawTokenHandlerTest
+    public class RawTokenParserTest
     {
-        private readonly RawTokenHandler _RawTokenHandler;
-        public RawTokenHandlerTest()
+        private readonly RawTokenParser _RawTokenParser;
+        public RawTokenParserTest()
         {
-            _RawTokenHandler = new RawTokenHandler();
+            _RawTokenParser = new RawTokenParser();
         }
 
         [TestMethod]
-        public void RawTokenHandlerCanBeInstantiated()
+        public void RawTokenParserCanBeInstantiated()
         {
-            var testObject = new RawTokenHandler();
+            var testObject = new RawTokenParser();
         }
 
         public void TestSimpleExpressionsRawTokens()
@@ -55,7 +55,7 @@ namespace InterpreterCore.Tests
                 // Get the current test case input, correct output, and real output.
                 string expression = currentTestCase.Key;
                 List<String> expectedResults = currentTestCase.Value;
-                List<String> actualResults = RawTokenHandler.SplitTrimmedExpression(expression);
+                List<String> actualResults = RawTokenParser.SplitTrimmedExpression(expression);
                 Assert.AreEqual(expectedResults.Count, actualResults.Count); // Check lists are equal size.
                 for (int currentTokenIndex = 0; currentTokenIndex < actualResults.Count; currentTokenIndex++)
                 {
