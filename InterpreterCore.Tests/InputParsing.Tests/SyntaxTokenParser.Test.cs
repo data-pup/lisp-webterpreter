@@ -26,12 +26,15 @@ namespace InterpreterCore.Tests
         {
             var testExpression = "(+";
             var expectedResult = new List<String>(){"(", "+"};
-            List<String> actualResult = SyntaxTokenParser.ParseSingleRawToken(testExpression);
+            List<String> actualResult = SyntaxTokenParser.ParseSingleRawToken(
+                testExpression);
+            // Check both lists are the same size before iterating through.
             Assert.AreEqual(expectedResult.Count, actualResult.Count);
             for (int currTokenIndex = 0; currTokenIndex < expectedResult.Count;
                                          currTokenIndex++)
-            {
-                Assert.AreEqual(expectedResult[currTokenIndex], actualResult[currTokenIndex]);
+            {   // Check that the two tokens are identical.
+                Assert.AreEqual(expectedResult[currTokenIndex],
+                                actualResult[currTokenIndex]);
             }
         }
     }

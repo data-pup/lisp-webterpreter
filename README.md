@@ -52,6 +52,12 @@ and then build a checking system to ensure that the expression is value. In
 order to do that, I will need to implement two classes: Atom and List. There
 are the two types of variables in Lisp, so this will be a prerequisite to
 using these to create a syntax tree.
+*  Good practice dictates that some of the helper methods used by the
+ParseExpressionIntoList method should be more encapsulated once I have built a
+robust test bench for the input parser class. These should be placed into
+a separate namespace. This will mean adding some import statements wherever
+these classes are referenced (ideally only the input parser class.)
+
 
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
