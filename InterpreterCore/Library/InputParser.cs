@@ -12,9 +12,23 @@ namespace InterpreterCore
         /// tree. The list returned is a flat list of strings, with superfluous
         /// characters removed.
         /// </summary>
-        public static List<String> ParseExpression(string expression)
+        public static List<String> ParseExpressionIntoList(string expression)
         {
-            throw new NotImplementedException();
+            if(expression == null)
+            {   // Null parameter check.
+                throw new NullReferenceException();
+            }
+            if(expression.Length == 0)
+            {   // Empty parameter check.
+                return new List<String>();
+            }
+            // First, remove any extraneous whitespace from the expression.
+            string trimmedExpression = WhitespaceParser.TrimWhitespace(expression);
+            // Next, split the trimmed expression into raw tokens based on whitespace.
+            List<String> rawTokens = RawTokenParser.SplitTrimmedExpression(trimmedExpression);
+            // Handle the raw token list, splitting raw tokens by syntactical meaning.
+            List<String> tokens = SyntaxTokenParser.SplitRawTokens(rawTokens);
+            return tokens;   // Return the ordered list of syntax tokens.
         }
     }
 }
