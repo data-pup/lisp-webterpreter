@@ -22,6 +22,36 @@ namespace InterpreterCore.Tests
         }
 
         [TestMethod]
+        public void TestInputParserCanHandleEmptyExpressions()
+        {
+            var simpleAdditionExpressions = new Dictionary<string,List<string>>()
+            {
+                { "", new List<string> {} },
+                { " ", new List<string> {} },
+                { "\t", new List<string> {} },
+                { "   ", new List<string> {} },
+                // Template Test Case Row
+                // { "", new List<string> {} },
+            };
+            TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
+        }
+
+        [TestMethod]
+        public void TestInputParserCanHandleSingleItemExpressions()
+        {
+            var singleItemExpressions = new Dictionary<string,List<string>>()
+            {
+                { "1", new List<string> {"1"} },
+                { "(1)", new List<String>() {"(", "1", ")"} },
+                { "( 1 )", new List<String>() {"(", "1", ")"} },
+                { "(\t1\t)", new List<String>() {"(", "1", ")"} },
+                { " ( 1 ) ", new List<String>() {"(", "1", ")"} },
+                { "((1))", new List<String>() {"(", "(", "1", ")", ")"} },
+            };
+            TestAllExpressionsParseCorrectly(singleItemExpressions);
+        }
+
+        [TestMethod]
         public void TestInputParserCanParseSimpleAdditionExpressions()
         {
             var simpleAdditionExpressions = new Dictionary<string,List<string>>()
@@ -43,21 +73,6 @@ namespace InterpreterCore.Tests
             {
                 { "(+ 1 (+ 1))", new List<string> {
                     "(", "+", "1", "(", "+", "1", ")", ")"} },
-                // Template Test Case Row
-                // { "", new List<string> {} },
-            };
-            TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
-        }
-
-        [TestMethod]
-        public void TestInputParserCanHandleEmptyExpressions()
-        {
-            var simpleAdditionExpressions = new Dictionary<string,List<string>>()
-            {
-                { "", new List<string> {} },
-                { " ", new List<string> {} },
-                { "\t", new List<string> {} },
-                { "   ", new List<string> {} },
                 // Template Test Case Row
                 // { "", new List<string> {} },
             };

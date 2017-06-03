@@ -30,5 +30,22 @@ namespace InterpreterCore.InputParsing
             List<String> tokens = SyntaxTokenParser.SplitRawTokens(rawTokens);
             return tokens;   // Return the ordered list of syntax tokens.
         }
+        protected class RawTokenParser
+        {
+            /// <summary>
+            /// This method will handle a string that has been treated by the
+            /// WhitespaceParser module. This splits the string into a list of
+            /// raw tokens, based on whitespace characters in the expression.
+            /// <summary>
+            public static List<String> SplitTrimmedExpression(string expression)
+            {
+                if(expression == null)
+                {
+                    throw new NullReferenceException();
+                }
+                List<String> rawTokens = new List<String>(expression.Split(' '));
+                return rawTokens;
+            }
+        }
     }
 }
