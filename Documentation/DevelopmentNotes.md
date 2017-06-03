@@ -36,6 +36,13 @@ interpreter library to generate output results, given an input.
 There is a blank directory structure to be worked on later that would handle
 interpreter commands like '.help' or '.exit'.
 
+Notes on the Atom and List classes: [General projections, subject to change]
+lispatom should be a generic class, for an int or float, that is created with a string.
+lisplist should be a linked list of atoms
+lispexpression should be a tuple storing an operator and a lisplist.
+lispast should be a linked list of lispexpressions.
+
+
 
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
