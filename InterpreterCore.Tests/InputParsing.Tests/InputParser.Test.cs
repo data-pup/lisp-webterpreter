@@ -25,33 +25,44 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void TestInputParserCanHandleEmptyExpressions()
         {
-            var simpleAdditionExpressions = new Dictionary<string,List<string>>()
-            {
-                { "", new List<string> {} },
-                { " ", new List<string> {} },
-                { "\t", new List<string> {} },
-                { "   ", new List<string> {} },
-                // Template Test Case Row
-                // { "", new List<string> {} },
-            };
+            var simpleAdditionExpressions = InputParserTestCases.emptyExpressions;
             TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
+        }
+
+        [TestMethod]
+        public void TestInputParserCanHandleSimpleSyntaxCharacters()
+        {
+            var simpleSyntaxCharacters = InputParserTestCases.syntaxTokenTestCases;
+            TestAllExpressionsParseCorrectly(simpleSyntaxCharacters);
         }
 
         [TestMethod]
         public void TestInputParserCanHandleSingleItemExpressions()
         {
-            var singleItemExpressions = new Dictionary<string,List<string>>()
-            {
-                { "1", new List<string> {"1"} },
-                { "(1)", new List<String>() {"(", "1", ")"} },
-                { "( 1 )", new List<String>() {"(", "1", ")"} },
-                { "(\t1\t)", new List<String>() {"(", "1", ")"} },
-                { " ( 1 ) ", new List<String>() {"(", "1", ")"} },
-                { "((1))", new List<String>() {"(", "(", "1", ")", ")"} },
-            };
+            var singleItemExpressions = InputParserTestCases.singleItemExpressions;
             TestAllExpressionsParseCorrectly(singleItemExpressions);
         }
 
+        [TestMethod]
+        public void TestInputParserCanHandleSingleOneWithVariousWhitespace()
+        {
+            var singleOnesWithWhitespace = InputParserTestCases.singleOneWithWhitespace;
+            TestAllExpressionsParseCorrectly(singleOnesWithWhitespace);
+        }
+
+        [TestMethod]
+        public void TestInputParserCanHandleTwoOnesWithVariousWhitespace()
+        {
+            var twoOnesWithWhitespace = InputParserTestCases.twoOnesWithWhitespace;
+            TestAllExpressionsParseCorrectly(twoOnesWithWhitespace);
+        }
+
+        [TestMethod]
+        public void TestInputParserCanHandleMiscWhitespaceExamples()
+        {
+            var whitespaceExamples = InputParserTestCases.miscellaenousWhitespaceTests;
+            TestAllExpressionsParseCorrectly(whitespaceExamples);
+        }
         [TestMethod]
         public void TestInputParserCanParseSimpleAdditionExpressions()
         {
@@ -62,14 +73,14 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void TestInputParserCanParseNestedExpressions()
         {
-            var simpleAdditionExpressions = new Dictionary<string,List<string>>()
+            var nestedExpressions = new Dictionary<string,List<string>>()
             {
                 { "(+ 1 (+ 1))", new List<string> {
                     "(", "+", "1", "(", "+", "1", ")", ")"} },
                 // Template Test Case Row
                 // { "", new List<string> {} },
             };
-            TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
+            TestAllExpressionsParseCorrectly(nestedExpressions);
         }
 
         /// <summary>
