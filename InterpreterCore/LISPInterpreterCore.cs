@@ -21,9 +21,9 @@ namespace InterpreterCore
         /// <summary>
         /// Pass an array the the client, for debugging purposes.
         /// </summary>
-        public List<String> Greet()
+        public string[] Greet()
         {
-            return new List<String>(){"hello", "world"};
+            return new string[] {"hello", "world"};
         }
     }
 }

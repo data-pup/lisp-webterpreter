@@ -30,9 +30,9 @@ namespace InterpreterCore.Tests
         public void GreetingWorks()
         {
             var testObject = new LISPInterpreterCore();
-            var expectedGreeting = new List<String>(){ "hello", "world" };
+            var expectedGreeting = new string[] { "hello", "world" };
             var greeting = testObject.Greet();
-            Assert.AreEqual(2, greeting.Count);
+            Assert.AreEqual(2, greeting.Length);
             for (int currWordIndex = 0; currWordIndex < 2; currWordIndex++)
             {
                 Assert.AreEqual(expectedGreeting[currWordIndex],

@@ -73,12 +73,12 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void TestRawInputParserCanParseNestedExpressions()
         {
-            var nestedExpressions = new Dictionary<string,List<string>>()
+            var nestedExpressions = new Dictionary<string,string[]>()
             {
-                { "(+ 1 (+ 1))", new List<string> {
+                { "(+ 1 (+ 1))", new string[] {
                     "(", "+", "1", "(", "+", "1", ")", ")"} },
                 // Template Test Case Row
-                // { "", new List<string> {} },
+                // { "", new string[] {} },
             };
             TestAllExpressionsParseCorrectly(nestedExpressions);
         }
@@ -89,12 +89,12 @@ namespace InterpreterCore.Tests
         /// actual results of the RawInputParser.ParseExpressionIntoList method
         /// will be checked using the CheckSyntaxTokenListsAreEqual method.
         /// </summary>
-        private void TestAllExpressionsParseCorrectly(Dictionary<string,List<string>> expressionsAndResults)
+        private void TestAllExpressionsParseCorrectly(Dictionary<string,string[]> expressionsAndResults)
         {
             foreach(var currentTestCase in expressionsAndResults)
             {
                 string inputExpression = currentTestCase.Key;
-                List<string> expectedSyntaxTokenList = currentTestCase.Value;
+                string[] expectedSyntaxTokenList = currentTestCase.Value;
                 string[] actualSyntaxTokenList = RawInputParser.ParseExpressionIntoList(inputExpression);
                 Assert.IsTrue(CheckSyntaxTokenListsAreEqual(expectedSyntaxTokenList, actualSyntaxTokenList));
             }
@@ -107,14 +107,14 @@ namespace InterpreterCore.Tests
         /// 'verbosity' parameter is set to true, the two token lists
         /// will be printed in full before comparing.
         /// </summary>
-        private bool CheckSyntaxTokenListsAreEqual(List<string> expectedSyntaxTokenList,
+        private bool CheckSyntaxTokenListsAreEqual(string[] expectedSyntaxTokenList,
                                                    string[] actualSyntaxTokenList)
         {
-            if(expectedSyntaxTokenList.Count != actualSyntaxTokenList.Length)
+            if(expectedSyntaxTokenList.Length != actualSyntaxTokenList.Length)
             {
                 return false;
             }
-            for(int currentTokenIndex = 0; currentTokenIndex < expectedSyntaxTokenList.Count;
+            for(int currentTokenIndex = 0; currentTokenIndex < expectedSyntaxTokenList.Length;
                                            currentTokenIndex++)
             {
                 string expectedToken = expectedSyntaxTokenList[currentTokenIndex];
