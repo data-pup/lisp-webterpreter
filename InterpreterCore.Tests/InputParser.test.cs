@@ -37,11 +37,27 @@ namespace InterpreterCore.Tests
         }
 
         [TestMethod]
+        public void TestInputParserCanParseNestedExpressions()
+        {
+            var simpleAdditionExpressions = new Dictionary<string,List<string>>()
+            {
+                { "(+ 1 (+ 1))", new List<string> {
+                    "(", "+", "1", "(", "+", "1", ")", ")"} },
+                // Template Test Case Row
+                // { "", new List<string> {} },
+            };
+            TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
+        }
+
+        [TestMethod]
         public void TestInputParserCanHandleEmptyExpressions()
         {
             var simpleAdditionExpressions = new Dictionary<string,List<string>>()
             {
                 { "", new List<string> {} },
+                { " ", new List<string> {} },
+                { "\t", new List<string> {} },
+                { "   ", new List<string> {} },
                 // Template Test Case Row
                 // { "", new List<string> {} },
             };
