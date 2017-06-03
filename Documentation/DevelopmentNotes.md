@@ -42,7 +42,27 @@ lisplist should be a linked list of atoms
 lispexpression should be a tuple storing an operator and a lisplist.
 lispast should be a linked list of lispexpressions.
 
+### Jun 03 Notes:
 
+Atom is now a generic class that can be instantiated with a specific type!
+There is some testing in place for this now as well, and it seems to be
+working well :)
+
+Next, I am going to refactor the input parsing module, and encapsulate things
+better. This should all be placed in an individual namespace, such as
+InterpreterCore.InputParsing. Once this is done, we will add more functionality
+in the public API so that the function will return a nested list, rather than
+a flat list of syntax tokens. (This will remove parentheses tokens.)
+
+Other long term changes I am thinking about:
+Interpreter envirionment help, info, exit commands should be built, these can
+print simple strings, or end the program (This should add an exit() function to
+the interpreter core module.).
+
+The operator characters file in the syntax directory will likely become
+obsolete when operator class objects are added. These objects would have
+some sort of Token = '+' member, which could be referenced directly in lieu
+of an extra file that would also have to be modified when changing things.
 
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
