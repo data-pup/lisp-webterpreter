@@ -6,26 +6,33 @@ namespace ConsoleInterpreter
 {
     class SimpleInterpreter
     {
-        public static void StartRuntime()
+        private string promptString;
+        public SimpleInterpreter()
+        {
+            promptString = "> ";
+        }
+        public void StartRuntime()
         {
             string clientInput;
             var _testInterpreter = new LISPInterpreterCore();
             while(true)
             {
+                PrintPromptString(promptString);
                 clientInput = Console.ReadLine();
                 var parsedExpression = _testInterpreter.ParseInputLine(clientInput);
                 PrintParsedExpression(parsedExpression);
             }
         }
 
+        private static void PrintPromptString(string promptString)
+        {
+            Console.Write(promptString);
+        }
+
         private static void PrintParsedExpression(List<string> parsedExpression)
         {
-            int tokenCounter = 0;
-            foreach(var token in parsedExpression)
-            {
-                Console.WriteLine("Token #{0}: {1}", tokenCounter, token);
-                tokenCounter++;
-            }
+            var parsedExpressionString = String.Join(",\t", parsedExpression);
+            Console.WriteLine("Result: {0}", parsedExpressionString);
         }
     }
 }
