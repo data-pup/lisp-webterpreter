@@ -30,7 +30,7 @@ namespace InterpreterCore.InputParsing
         /// This method will handle splitting an individual raw token into
         /// a list of syntax tokens. If the raw token is an exact match with
         /// </summary>
-        private static List<String> ParseSingleRawToken(string rawToken)
+        private static string[] ParseSingleRawToken(string rawToken)
         {
             if(rawToken == null)
             {
@@ -38,7 +38,7 @@ namespace InterpreterCore.InputParsing
             }
             if(rawToken.Length == 1)
             {
-                return new List<String>(){rawToken};
+                return new string[] {rawToken};
             }
             var syntaxTokens = new List<String>(); // The list we'll return.
             int previousTokenStartIndex = 0;
@@ -67,7 +67,7 @@ namespace InterpreterCore.InputParsing
                     previousTokenStartIndex, rawToken.Length);
                 syntaxTokens.Add(finalToken);
             }
-            return syntaxTokens;
+            return syntaxTokens.ToArray();
         }
 
         private static string GetSyntaxTokenSubstring(string rawToken,
