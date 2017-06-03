@@ -26,8 +26,17 @@ robust test bench for the input parser class. These should be placed into
 a separate namespace. This will mean adding some import statements wherever
 these classes are referenced (ideally only the input parser class.)
 
+### Jun 02 Notes:
+
+This code went through some serious structural changes, so it's worth mentioning
+why.' A rough skeleton of the interpreter runtime environment is now in place.
+The console interpreter creates a new interpreter instance, which uses the
+interpreter library to generate output results, given an input.
+
+There is a blank directory structure to be worked on later that would handle
+interpreter commands like '.help' or '.exit'.
+
 
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
-*  Implement the test cases for the syntax token parsing class. Currently this is only verified via debug functions in the console interpreter module.
 *  Add an abstract syntax tree class. Write a constructor that will create a tree using this list.
