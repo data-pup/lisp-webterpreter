@@ -46,8 +46,7 @@ namespace InterpreterCore.InputParsing
                                            currentCharIndex++)
             {   // Iterate through the token, looking for reserved characters.
                 var currentCharacter = rawToken[currentCharIndex];
-                if(ReservedCharacters.Characters.Contains(currentCharacter)
-                    || OperatorCharacters.Tokens.Contains(currentCharacter))
+                if(ReservedCharacters.Characters.Contains(currentCharacter))
                 {   // Handle a reserved character if identified.
                     if(previousTokenStartIndex != currentCharIndex)
                     {   // Identify the previous token prior to this token.
