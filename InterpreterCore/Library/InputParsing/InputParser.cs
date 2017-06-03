@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace InterpreterCore.InputParsing
 {
@@ -45,6 +46,21 @@ namespace InterpreterCore.InputParsing
                 }
                 List<String> rawTokens = new List<String>(expression.Split(' '));
                 return rawTokens;
+            }
+        }
+        protected class WhitespaceParser
+        {
+            public static string TrimWhitespace(string expression)
+            {
+                if(expression == null) // Check for a null parameter.
+                {
+                    throw new NullReferenceException();
+                }
+                // Replace all whitespace regions with a single ' ' character.
+                string cleanedExpression = Regex.Replace(expression, @"\s+", " ");
+                // Trim leading and/or trailing whitespace from the expression.
+                string trimmedExpression = cleanedExpression.Trim();
+                return trimmedExpression;
             }
         }
     }

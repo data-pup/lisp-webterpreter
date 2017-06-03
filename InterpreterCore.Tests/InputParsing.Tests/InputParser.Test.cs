@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 
 using InterpreterCore.InputParsing;
+using InterpreterCore.Tests.TestCases;
 
 namespace InterpreterCore.Tests
 {
@@ -54,15 +55,7 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void TestInputParserCanParseSimpleAdditionExpressions()
         {
-            var simpleAdditionExpressions = new Dictionary<string,List<string>>()
-            {
-                { "(+ 1 1)", new List<string> {"(", "+", "1", "1", ")"} },
-                { " (+ 1 1)", new List<string> {"(", "+", "1", "1", ")"} },
-                { "(+ 1 1) ", new List<string> {"(", "+", "1", "1", ")"} },
-                { "( + 1 1 )", new List<string> {"(", "+", "1", "1", ")"} },
-                // Template Test Case Row
-                // { "", new List<string> {} },
-            };
+            var simpleAdditionExpressions = InputParserTestCases.simpleAdditionExpressions;
             TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
         }
 
