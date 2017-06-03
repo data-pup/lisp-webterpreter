@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace InterpreterCore
+namespace InterpreterCore.InputParsing
 {
     public class SyntaxTokenParser
     {
