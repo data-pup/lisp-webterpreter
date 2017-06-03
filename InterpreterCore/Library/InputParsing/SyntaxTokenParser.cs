@@ -11,7 +11,7 @@ namespace InterpreterCore.InputParsing
         /// token into separate syntax tokens.
         /// Example: ['(+', '1)'] => ['(', '+', '1', ')']
         /// </summary>
-        public static List<String> SplitRawTokens(List<String> rawTokens)
+        public static List<String> SplitRawTokens(string[] rawTokens)
         {
             if(rawTokens == null)
             {

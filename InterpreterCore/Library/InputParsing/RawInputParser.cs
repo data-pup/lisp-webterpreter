@@ -24,44 +24,43 @@ namespace InterpreterCore.InputParsing
                 return new List<String>();
             }
             // First, remove any extraneous whitespace from the expression.
-            string trimmedExpression = WhitespaceParser.TrimWhitespace(expression);
+            string trimmedExpression = TrimWhitespace(expression);
             // Next, split the trimmed expression into raw tokens based on whitespace.
-            List<String> rawTokens = RawTokenParser.SplitTrimmedExpression(trimmedExpression);
+            string[] rawTokens = SplitTrimmedExpression(trimmedExpression);
             // Handle the raw token list, splitting raw tokens by syntactical meaning.
             List<String> tokens = SyntaxTokenParser.SplitRawTokens(rawTokens);
             return tokens;   // Return the ordered list of syntax tokens.
         }
-        protected class RawTokenParser
+
+        /// <summary>
+        /// This method removes extra whitespace from the input expression.
+        /// </summary>
+        private static string TrimWhitespace(string expression)
         {
-            /// <summary>
-            /// This method will handle a string that has been treated by the
-            /// WhitespaceParser module. This splits the string into a list of
-            /// raw tokens, based on whitespace characters in the expression.
-            /// <summary>
-            public static List<String> SplitTrimmedExpression(string expression)
+            if(expression == null) // Check for a null parameter.
             {
-                if(expression == null)
-                {
-                    throw new NullReferenceException();
-                }
-                List<String> rawTokens = new List<String>(expression.Split(' '));
-                return rawTokens;
+                throw new NullReferenceException();
             }
+            // Replace all whitespace regions with a single ' ' character.
+            string cleanedExpression = Regex.Replace(expression, @"\s+", " ");
+            // Trim leading and/or trailing whitespace from the expression.
+            string trimmedExpression = cleanedExpression.Trim();
+            return trimmedExpression;
         }
-        protected class WhitespaceParser
+
+        /// <summary>
+        /// This method will handle a string that has been treated by the
+        /// WhitespaceParser module. This splits the string into a list of
+        /// raw tokens, based on whitespace characters in the expression.
+        /// <summary>
+        private static string[] SplitTrimmedExpression(string expression)
         {
-            public static string TrimWhitespace(string expression)
+            if(expression == null)
             {
-                if(expression == null) // Check for a null parameter.
-                {
-                    throw new NullReferenceException();
-                }
-                // Replace all whitespace regions with a single ' ' character.
-                string cleanedExpression = Regex.Replace(expression, @"\s+", " ");
-                // Trim leading and/or trailing whitespace from the expression.
-                string trimmedExpression = cleanedExpression.Trim();
-                return trimmedExpression;
+                throw new NullReferenceException();
             }
+            List<String> rawTokens = new List<String>(expression.Split(' '));
+            return rawTokens.ToArray();
         }
     }
 }
