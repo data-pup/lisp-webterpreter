@@ -13,7 +13,7 @@ namespace InterpreterCore.InputParsing
         /// tree. The list returned is a flat list of strings, with superfluous
         /// characters removed.
         /// </summary>
-        public static List<String> ParseExpressionIntoList(string expression)
+        public static string[] ParseExpressionIntoList(string expression)
         {
             if(expression == null)
             {   // Null parameter check.
@@ -28,7 +28,7 @@ namespace InterpreterCore.InputParsing
             // Next, split the trimmed expression into raw tokens based on whitespace.
             string[] rawTokens = SplitTrimmedExpression(trimmedExpression);
             // Handle the raw token list, splitting raw tokens by syntactical meaning.
-            List<String> tokens = SyntaxTokenParser.SplitRawTokens(rawTokens);
+            string[] tokens = SyntaxTokenParser.SplitRawTokens(rawTokens);
             return tokens;   // Return the ordered list of syntax tokens.
         }
 

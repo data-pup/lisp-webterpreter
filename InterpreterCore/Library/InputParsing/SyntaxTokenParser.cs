@@ -11,7 +11,7 @@ namespace InterpreterCore.InputParsing
         /// token into separate syntax tokens.
         /// Example: ['(+', '1)'] => ['(', '+', '1', ')']
         /// </summary>
-        public static List<String> SplitRawTokens(string[] rawTokens)
+        public static string[] SplitRawTokens(string[] rawTokens)
         {
             if(rawTokens == null)
             {
@@ -23,7 +23,7 @@ namespace InterpreterCore.InputParsing
             {
                 syntaxTokens.AddRange(ParseSingleRawToken(currentRawToken));
             }
-            return syntaxTokens;
+            return syntaxTokens.ToArray();
         }
 
         /// <summary>
