@@ -2,10 +2,15 @@ namespace InterpreterCore.Classes
 {
     public class LISPAtom<T>
     {
-        public T Value { get; set; }
-        public LISPAtom(T _Value)
+        private T _value;
+        public LISPAtom(T value)
         {
-            Value = _Value;
+            _value = value;
+        }
+        public T Value
+        {
+            get { return _value; }
+            set { _value = value; }
         }
     }
 }

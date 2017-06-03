@@ -27,5 +27,13 @@ namespace InterpreterCore.Tests
             var testObject = new LISPAtom<double>(1.1);
             Assert.AreEqual(testObject.Value, 1.1);
         }
+
+        [TestMethod]
+        public void LISPAtomCanBeAssignedNewValue()
+        {
+            LISPAtom<int> testObject = new LISPAtom<int>(1);
+            testObject.Value = 5;
+            Assert.AreEqual(testObject.Value, 5);
+        }
     }
 }
