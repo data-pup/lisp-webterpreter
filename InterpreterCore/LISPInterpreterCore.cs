@@ -11,6 +11,11 @@ namespace InterpreterCore
             variables = new Dictionary<string,Object>();
         }
 
+        public List<string> ParseInputLine(string inputLine)
+        {
+            return InputParser.ParseExpressionIntoList(inputLine);
+        }
+
         /// <summary>
         /// Pass an array the the client, for debugging purposes.
         /// </summary>

@@ -9,7 +9,8 @@ namespace ConsoleInterpreter
         static void Main(string[] args)
         {
             Console.WriteLine("Initializing LISP Interpreter Core Module...");
-            DevelopmentTest();
+            SimpleInterpreter.StartRuntime();
+            // DevelopmentTest();
         }
         public static void DevelopmentTest()
         {
