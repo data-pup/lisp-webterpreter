@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace InterpreterCore.InputParsing
 {
-    public class InputParser
+    public class RawInputParser
     {
         /// <summary>
         /// This class is a wrapper around the helper methods used to parse

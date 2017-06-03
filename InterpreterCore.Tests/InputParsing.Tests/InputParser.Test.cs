@@ -8,70 +8,70 @@ using InterpreterCore.Tests.TestCases;
 namespace InterpreterCore.Tests
 {
     [TestClass]
-    public class InputParserTest
+    public class RawInputParserTest
     {
-        private readonly InputParser _InputParser;
-        public InputParserTest()
+        private readonly RawInputParser _RawInputParser;
+        public RawInputParserTest()
         {
-            _InputParser = new InputParser();
+            _RawInputParser = new RawInputParser();
         }
 
         [TestMethod]
-        public void InputParserCanBeInstantiated()
+        public void RawInputParserCanBeInstantiated()
         {
-            var testObject = new InputParser();
+            var testObject = new RawInputParser();
         }
 
         [TestMethod]
-        public void TestInputParserCanHandleEmptyExpressions()
+        public void TestRawInputParserCanHandleEmptyExpressions()
         {
-            var simpleAdditionExpressions = InputParserTestCases.emptyExpressions;
+            var simpleAdditionExpressions = RawInputParserTestCases.emptyExpressions;
             TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
         }
 
         [TestMethod]
-        public void TestInputParserCanHandleSimpleSyntaxCharacters()
+        public void TestRawInputParserCanHandleSimpleSyntaxCharacters()
         {
-            var simpleSyntaxCharacters = InputParserTestCases.syntaxTokenTestCases;
+            var simpleSyntaxCharacters = RawInputParserTestCases.syntaxTokenTestCases;
             TestAllExpressionsParseCorrectly(simpleSyntaxCharacters);
         }
 
         [TestMethod]
-        public void TestInputParserCanHandleSingleItemExpressions()
+        public void TestRawInputParserCanHandleSingleItemExpressions()
         {
-            var singleItemExpressions = InputParserTestCases.singleItemExpressions;
+            var singleItemExpressions = RawInputParserTestCases.singleItemExpressions;
             TestAllExpressionsParseCorrectly(singleItemExpressions);
         }
 
         [TestMethod]
-        public void TestInputParserCanHandleSingleOneWithVariousWhitespace()
+        public void TestRawInputParserCanHandleSingleOneWithVariousWhitespace()
         {
-            var singleOnesWithWhitespace = InputParserTestCases.singleOneWithWhitespace;
+            var singleOnesWithWhitespace = RawInputParserTestCases.singleOneWithWhitespace;
             TestAllExpressionsParseCorrectly(singleOnesWithWhitespace);
         }
 
         [TestMethod]
-        public void TestInputParserCanHandleTwoOnesWithVariousWhitespace()
+        public void TestRawInputParserCanHandleTwoOnesWithVariousWhitespace()
         {
-            var twoOnesWithWhitespace = InputParserTestCases.twoOnesWithWhitespace;
+            var twoOnesWithWhitespace = RawInputParserTestCases.twoOnesWithWhitespace;
             TestAllExpressionsParseCorrectly(twoOnesWithWhitespace);
         }
 
         [TestMethod]
-        public void TestInputParserCanHandleMiscWhitespaceExamples()
+        public void TestRawInputParserCanHandleMiscWhitespaceExamples()
         {
-            var whitespaceExamples = InputParserTestCases.miscellaenousWhitespaceTests;
+            var whitespaceExamples = RawInputParserTestCases.miscellaenousWhitespaceTests;
             TestAllExpressionsParseCorrectly(whitespaceExamples);
         }
         [TestMethod]
-        public void TestInputParserCanParseSimpleAdditionExpressions()
+        public void TestRawInputParserCanParseSimpleAdditionExpressions()
         {
-            var simpleAdditionExpressions = InputParserTestCases.simpleAdditionExpressions;
+            var simpleAdditionExpressions = RawInputParserTestCases.simpleAdditionExpressions;
             TestAllExpressionsParseCorrectly(simpleAdditionExpressions);
         }
 
         [TestMethod]
-        public void TestInputParserCanParseNestedExpressions()
+        public void TestRawInputParserCanParseNestedExpressions()
         {
             var nestedExpressions = new Dictionary<string,List<string>>()
             {
@@ -86,7 +86,7 @@ namespace InterpreterCore.Tests
         /// <summary>
         /// This is a private helper method that will read a dictionary of test
         /// inputs and expected outputs. For each item in the dictionary, the
-        /// actual results of the InputParser.ParseExpressionIntoList method
+        /// actual results of the RawInputParser.ParseExpressionIntoList method
         /// will be checked using the CheckSyntaxTokenListsAreEqual method.
         /// </summary>
         private void TestAllExpressionsParseCorrectly(Dictionary<string,List<string>> expressionsAndResults)
@@ -95,7 +95,7 @@ namespace InterpreterCore.Tests
             {
                 string inputExpression = currentTestCase.Key;
                 List<string> expectedSyntaxTokenList = currentTestCase.Value;
-                List<string> actualSyntaxTokenList = InputParser.ParseExpressionIntoList(inputExpression);
+                List<string> actualSyntaxTokenList = RawInputParser.ParseExpressionIntoList(inputExpression);
                 Assert.IsTrue(CheckSyntaxTokenListsAreEqual(expectedSyntaxTokenList, actualSyntaxTokenList));
             }
         }

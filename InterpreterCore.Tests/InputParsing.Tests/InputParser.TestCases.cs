@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace InterpreterCore.Tests.TestCases
 {
-    public class InputParserTestCases
+    public class RawInputParserTestCases
     {
         public static readonly Dictionary<string,List<string>> emptyExpressions = new Dictionary<string,List<string>>
         {

@@ -15,7 +15,7 @@ namespace InterpreterCore
 
         public List<string> ParseInputLine(string inputLine)
         {
-            return InputParser.ParseExpressionIntoList(inputLine);
+            return RawInputParser.ParseExpressionIntoList(inputLine);
         }
 
         /// <summary>
