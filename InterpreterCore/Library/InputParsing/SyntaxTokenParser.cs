@@ -30,7 +30,7 @@ namespace InterpreterCore.InputParsing
         /// This method will handle splitting an individual raw token into
         /// a list of syntax tokens. If the raw token is an exact match with
         /// </summary>
-        public static List<String> ParseSingleRawToken(string rawToken)
+        private static List<String> ParseSingleRawToken(string rawToken)
         {
             if(rawToken == null)
             {
