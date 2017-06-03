@@ -16,11 +16,9 @@ namespace ConsoleInterpreter
 
         private static void DevelopmentMain(string[] args)
         {
-            // TemporaryDevelopmentFunctions.GreetCoreModule();
-            // TemporaryDevelopmentFunctions.DevelopmentTest();
-
             // Working space:
             // ----------------------------------------------------------------
+            TemporaryDevelopmentFunctions.Temp();
             // ----------------------------------------------------------------
         }
     }

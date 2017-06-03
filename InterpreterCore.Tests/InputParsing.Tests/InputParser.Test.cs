@@ -95,7 +95,7 @@ namespace InterpreterCore.Tests
             {
                 string inputExpression = currentTestCase.Key;
                 List<string> expectedSyntaxTokenList = currentTestCase.Value;
-                List<string> actualSyntaxTokenList = RawInputParser.ParseExpressionIntoList(inputExpression);
+                string[] actualSyntaxTokenList = RawInputParser.ParseExpressionIntoList(inputExpression);
                 Assert.IsTrue(CheckSyntaxTokenListsAreEqual(expectedSyntaxTokenList, actualSyntaxTokenList));
             }
         }
@@ -108,9 +108,9 @@ namespace InterpreterCore.Tests
         /// will be printed in full before comparing.
         /// </summary>
         private bool CheckSyntaxTokenListsAreEqual(List<string> expectedSyntaxTokenList,
-                                                   List<string> actualSyntaxTokenList)
+                                                   string[] actualSyntaxTokenList)
         {
-            if(expectedSyntaxTokenList.Count != actualSyntaxTokenList.Count)
+            if(expectedSyntaxTokenList.Count != actualSyntaxTokenList.Length)
             {
                 return false;
             }

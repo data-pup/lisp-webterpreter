@@ -21,7 +21,7 @@ namespace InterpreterCore.InputParsing
             }
             if(expression.Length == 0)
             {   // Empty parameter check.
-                return new List<String>();
+                return new string[]{};
             }
             // First, remove any extraneous whitespace from the expression.
             string trimmedExpression = TrimWhitespace(expression);

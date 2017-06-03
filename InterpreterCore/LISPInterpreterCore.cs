@@ -13,7 +13,7 @@ namespace InterpreterCore
             variables = new Dictionary<string,Object>();
         }
 
-        public List<string> ParseInputLine(string inputLine)
+        public string[] ParseInputLine(string inputLine)
         {
             return RawInputParser.ParseExpressionIntoList(inputLine);
         }
