@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using InterpreterCore.Classes;
 using InterpreterCore.InputParsing;
 
 namespace InterpreterCore
@@ -24,6 +25,14 @@ namespace InterpreterCore
         public string[] Greet()
         {
             return new string[] {"hello", "world"};
+        }
+
+        private void InstantiateOperators()
+        // private ICollection<string> InstantiateOperators()
+        {
+            // return new ICollection<string>
+            // {
+            // }
         }
     }
 }
