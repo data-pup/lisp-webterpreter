@@ -39,11 +39,6 @@
 //         public void InnerWhitespaceRemovedCorrectly()
 //         {
 //             var testInputsAndAnswers = new Dictionary<String,String>();
-//             testInputsAndAnswers.Add("1 1","1 1");
-//             testInputsAndAnswers.Add("1  1","1 1");
-//             testInputsAndAnswers.Add("1   1","1 1");
-//             testInputsAndAnswers.Add("1\t1","1 1");
-//             testInputsAndAnswers.Add("1\t\t1","1 1");
 //             RunWhitespaceTests(testInputsAndAnswers);
 //         }
 
