@@ -20,7 +20,16 @@ namespace ConsoleInterpreter
 
         public static void BuildAST(string[] rawTokens)
         {
-            var ast = new IEnumerable<IEnumerable<string>>();
+            var ast = new LinkedList<string[]>();
+            LinkedList<string> currentExpression;
+            for(int currenRawTokenIndex = 0; currenRawTokenIndex < rawTokens.Length;
+                                             currenRawTokenIndex++)
+            {
+                if(currentToken == "(")
+                {
+                    currentExpression = new LinkedList<string>();
+                }
+            }
         }
     }
 }
