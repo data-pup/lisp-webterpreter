@@ -9,10 +9,12 @@ namespace InterpreterCore.AbstractSyntaxTree
     {
         private string _token;
         private LISPAbstractSyntaxTreeNode[] _children;
+        private LISPAbstractSyntaxTreeNode _parent;
         public LISPAbstractSyntaxTreeNode()
         {
             _token = null;
             _children = null;
+            _parent = null;
         }
         public LISPAbstractSyntaxTreeNode(string token)
         {
@@ -32,10 +34,6 @@ namespace InterpreterCore.AbstractSyntaxTree
         {
             get { return _token; }
         }
-        public string Operator
-        {
-            get { return _token; }
-        }
         public LISPAbstractSyntaxTreeNode[] Children
         {
             get { return _children; }
@@ -45,6 +43,11 @@ namespace InterpreterCore.AbstractSyntaxTree
         {
             get { return _children; }
             set { _children = value; }
+        }
+        public LISPAbstractSyntaxTreeNode Parent
+        {
+            get { return _parent; }
+            set { _parent = value; }
         }
         public bool IsOperator()
         {

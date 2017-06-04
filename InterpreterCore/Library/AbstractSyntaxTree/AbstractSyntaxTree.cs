@@ -21,13 +21,14 @@ namespace InterpreterCore.AbstractSyntaxTree
             }
             int numberOfTokens = rawTokens.Length;
             int nestingIndex = 0;
-            List<List<string>> nestedTokens = new List<List<string>>();
+            var currentNode = _root;
             for(int currentTokenIndex = 0; currentTokenIndex < numberOfTokens; currentTokenIndex++)
             {
                 string currentToken = rawTokens[currentTokenIndex];
                 if(currentToken == "(")
                 {   // Open a new nested list, and increase the nesting level.
-                    nestedTokens.Add(new List<string>());
+                    // TODO Add token
+                    // 
                     nestingIndex++;
                     continue;
                 }
@@ -42,7 +43,7 @@ namespace InterpreterCore.AbstractSyntaxTree
                 }
                 else
                 {   // 
-                    nestedTokens[nestingIndex].Add(currentToken);
+                    // TODO Add token
                 }
             }
             if(nestingIndex != 0)
