@@ -60,9 +60,9 @@ namespace InterpreterCore.AbstractSyntaxTree
                 return true;
             return false;
         }
-        public bool IsOperator()
+        public static bool IsOperator(string rawToken)
         {
-            if(_token == "+" || _token == "-" || _token == "*" || _token == "/")
+            if(rawToken == "+" || rawToken == "-" || rawToken == "*" || rawToken == "/")
                 return true;
             return false;
         }

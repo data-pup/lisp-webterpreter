@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 
 using InterpreterCore.AbstractSyntaxTree;
+using InterpreterCore.Tests.TestCases;
 
 namespace InterpreterCore.Tests
 {
@@ -16,24 +17,28 @@ namespace InterpreterCore.Tests
         }
 
         [TestMethod]
-        public void AbstractSyntaxTreeNodeCanStoreOperatorToken()
+        public void AbstractSyntaxTreeNodeCanStoreAndIdentifyOperatorTokens()
         {
-            var testObject = new LISPAbstractSyntaxTreeNode("+");
-            Assert.IsTrue(testObject.IsOperator());
+            var operatorTokensAndAnswers = AbstractSyntaxTreeNodeTestCases.AbstractSyntaxTreeNodeOperatorTokenTests;
+            foreach(var currentTestCase in operatorTokensAndAnswers)
+            {
+                string token = currentTestCase.Key;
+                bool expectedResult = currentTestCase.Value;
+                bool actualResult = LISPAbstractSyntaxTreeNode.IsOperator(token);
+                Assert.AreEqual(expectedResult, actualResult);
+            }
         }
 
         [TestMethod]
         public void AbstractSyntaxTreeNodeCanStoreNumberToken()
         {
             var testObject = new LISPAbstractSyntaxTreeNode("1");
-            Assert.IsFalse(testObject.IsOperator());
         }
 
         [TestMethod]
         public void AbstractSyntaxTreeNodeCanStoreVariableToken()
         {
             var testObject = new LISPAbstractSyntaxTreeNode("x");
-            Assert.IsFalse(testObject.IsOperator());
         }
 
         [TestMethod]
@@ -48,34 +53,21 @@ namespace InterpreterCore.Tests
         public void AbstractSyntaxTreeNodeAddPlacesTwoChildrenCorrectly()
         {
             var parentNode = new LISPAbstractSyntaxTreeNode();
-            parentNode.Add("+");
-            parentNode.Add("1");
-            parentNode.Add("2");
-            Assert.AreEqual(parentNode.Token, "+");
-            Assert.AreEqual(parentNode.Children[0], "1");
-            Assert.AreEqual(parentNode.Children[1], "2");
+            var rawTokens = new string[]{"+", "1", "2"};
+            var expectedToken = "+";
+            var expectedArguments = new string[]{"1", "2"};
+            foreach(var token in rawTokens)
+            {
+                parentNode.Add(token);
+            }
+            var actualToken = parentNode.Token;
+            Assert.AreEqual(expectedToken, actualToken);
+            var actualArguments = new Stack<LISPAbstractSyntaxTreeNode>(parentNode.Children);
+            Assert.AreEqual(expectedArguments.Length, actualArguments.Count);
+            foreach(var currentChild in actualArguments)
+            {
+                Assert.IsTrue(actualArguments.Contains(currentChild));
+            }
         }
-
-        // [TestMethod]
-        // public void AbstractSyntaxTreeNodeChildrenCanBeSetToMultipleElements()
-        // {
-        //     var parentNode = new LISPAbstractSyntaxTreeNode("+");
-        //     var children = new List<LISPAbstractSyntaxTreeNode>
-        //     {
-        //         new LISPAbstractSyntaxTreeNode("1"),
-        //         new LISPAbstractSyntaxTreeNode("2"),
-        //     };
-        //     var expectedChildrenTokens = new List<string> { "1", "2" };
-        //     parentNode.Children = children.ToArray();
-        //     Assert.AreEqual(parentNode.Token,"+");
-        //     int currExpectedChildIndex = 0;
-        //     foreach(var currentChild in children)
-        //     {
-        //         var actualNodeToken = currentChild.Token;
-        //         var expectedToken = expectedChildrenTokens[currExpectedChildIndex];
-        //         Assert.AreEqual(expectedToken, actualNodeToken);
-        //         currExpectedChildIndex++;
-        //     }
-        // }
     }
 }
