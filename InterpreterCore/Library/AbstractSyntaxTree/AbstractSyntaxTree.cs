@@ -57,16 +57,5 @@ namespace InterpreterCore.AbstractSyntaxTree
             get { return _root; }
             set { _root = value; }
         }
-
-        // private void AddNewNode(string token)
-        // {
-        //     LISPAbstractSyntaxTreeNode newNode;
-        //     newNode = new LISPAbstractSyntaxTreeNode(token);
-        //     if(_root == null)
-        //     {
-        //         _root = newNode;
-        //     }
-        //     _root.Children.Add(newNode);
-        // }
     }
 }
