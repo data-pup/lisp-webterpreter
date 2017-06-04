@@ -69,5 +69,26 @@ namespace InterpreterCore.Tests
                 Assert.IsTrue(actualArguments.Contains(currentChild));
             }
         }
+
+        [TestMethod]
+        public void AbstractSyntaxTreeNodeCanIdentifyRoot()
+        {
+            //
+            var parentNode = new LISPAbstractSyntaxTreeNode();
+            var rawTokens = new string[]{"+", "1", "2"};
+            var expectedArguments = new string[]{"1", "2"};
+            foreach(var token in rawTokens)
+            {
+                parentNode.Add(token);
+            }
+            Assert.IsTrue(parentNode.IsRoot());
+            foreach(var currentChild in parentNode.Children)
+            {
+                bool nodeIsRoot = currentChild.IsRoot();
+                Assert.IsFalse(nodeIsRoot);
+                bool parentIsRoot = currentChild.Parent.IsRoot();
+                Assert.IsTrue(parentIsRoot);
+            }
+        }
     }
 }
