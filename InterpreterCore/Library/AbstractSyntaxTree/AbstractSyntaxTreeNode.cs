@@ -10,6 +10,7 @@ namespace InterpreterCore.AbstractSyntaxTree
         private string _token;
         private Stack<LISPAbstractSyntaxTreeNode> _children;
         private LISPAbstractSyntaxTreeNode _parent;
+
         public LISPAbstractSyntaxTreeNode()
         {
             _token = "";
@@ -22,6 +23,7 @@ namespace InterpreterCore.AbstractSyntaxTree
             _children = new Stack<LISPAbstractSyntaxTreeNode>();
             _parent = null;
         }
+
         public string Token
         {
             get { return _token; }
@@ -45,6 +47,7 @@ namespace InterpreterCore.AbstractSyntaxTree
             get { return _parent; }
             set { _parent = value; }
         }
+
         public void Add(LISPAbstractSyntaxTreeNode newNode)
         {
             if(Token == null || Token == "")
@@ -53,9 +56,13 @@ namespace InterpreterCore.AbstractSyntaxTree
                 Children = newNode.Children;
                 return;
             }
-            newNode.Parent = this;
-            _children.Push(newNode);
+            else
+            {
+                newNode.Parent = this; // A ha! It's always 'this'.
+                _children.Push(newNode);
+            }
         }
+
         public void Add(string rawToken)
         {
             if(Token == null || Token == "")
@@ -63,13 +70,18 @@ namespace InterpreterCore.AbstractSyntaxTree
                 Token = rawToken;
                 return;
             }
-            var newNode = new LISPAbstractSyntaxTreeNode(rawToken);
-            newNode.Parent = this;
-            _children.Push(newNode);
+            else
+            {
+                var newNode = new LISPAbstractSyntaxTreeNode(rawToken);
+                Add(newNode);
+            }
         }
+
         public bool IsRoot()
         {
-            if(_parent == null)
+            Console.WriteLine("IsRoot Called! Parent is: {0}", Parent);
+            Console.WriteLine("Parent token is: {0}", Parent.Token);
+            if(Parent == null)
                 return true;
             return false;
         }
