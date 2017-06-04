@@ -18,7 +18,8 @@ namespace ConsoleInterpreter
         {
             // Working space:
             // ----------------------------------------------------------------
-            TemporaryDevelopmentFunctions.TempBootstrap();
+            TemporaryDevelopmentFunctions.TestingTwoLevelTree();
+            // TemporaryDevelopmentFunctions.AbstractSyntaxTreeNodeCanIdentifyIfIsRoot();
             // ----------------------------------------------------------------
         }
     }

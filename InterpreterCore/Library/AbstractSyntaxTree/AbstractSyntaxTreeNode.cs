@@ -58,7 +58,7 @@ namespace InterpreterCore.AbstractSyntaxTree
             }
             else
             {
-                newNode.Parent = this; // A ha! It's always 'this'.
+                newNode.Parent = this;
                 _children.Push(newNode);
             }
         }
@@ -79,10 +79,10 @@ namespace InterpreterCore.AbstractSyntaxTree
 
         public bool IsRoot()
         {
-            Console.WriteLine("IsRoot Called! Parent is: {0}", Parent);
-            Console.WriteLine("Parent token is: {0}", Parent.Token);
+            Console.WriteLine("IsRoot Called! Current Token is: {0}", Token);
             if(Parent == null)
                 return true;
+            Console.WriteLine("Parent token is: {0}", Parent.Token);
             return false;
         }
         public LISPAbstractSyntaxTreeNode GetRootNode()

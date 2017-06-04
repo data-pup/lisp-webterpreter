@@ -33,6 +33,10 @@ namespace InterpreterCore.Tests
         public void AbstractSyntaxTreeNodeCanStoreNumberToken()
         {
             var testObject = new LISPAbstractSyntaxTreeNode("1");
+            string expectedToken = "1";
+            Assert.AreEqual(expectedToken, testObject.Token);
+            Assert.IsNull(testObject.Parent);
+            Assert.AreEqual(0, testObject.Children.Length);
         }
 
         [TestMethod]
@@ -44,10 +48,10 @@ namespace InterpreterCore.Tests
         [TestMethod]
         public void AbstractSyntaxTreeNodeAddWorksOnEmptyNode()
         {
-            var parentNode = new LISPAbstractSyntaxTreeNode();
-            parentNode.Add("+");
-            Assert.AreEqual(parentNode.Token, "+");
-            Assert.IsNull(parentNode.Parent);
+            var testObject = new LISPAbstractSyntaxTreeNode();
+            testObject.Add("+");
+            Assert.AreEqual(testObject.Token, "+");
+            Assert.IsNull(testObject.Parent);
         }
 
         [TestMethod]
@@ -68,6 +72,7 @@ namespace InterpreterCore.Tests
             foreach(var currentChild in actualArguments)
             {
                 Assert.IsTrue(actualArguments.Contains(currentChild));
+                Assert.AreEqual(currentChild.Parent, parentNode);
             }
         }
 
@@ -91,36 +96,34 @@ namespace InterpreterCore.Tests
             }
         }
 
-        // [TestMethod]
-        // public void AbstractSyntaxTreeNodeCanReturnRootNode()
-        // {
-        //     // Ex. (* 1 2 (- 3 (+ 4)))
-        //     // -------------------------------------------------------
-        //     var parentNode = new LISPAbstractSyntaxTreeNode();
-        //     var childTree = new LISPAbstractSyntaxTreeNode();
-        //     var grandChildTree = new LISPAbstractSyntaxTreeNode();
-        //     // -------------------------------------------------------
-        //     grandChildTree.Add("+");
-        //     grandChildTree.Add("4");
-        //     childTree.Add("-");
-        //     childTree.Add("3");
-        //     childTree.Add(grandChildTree);
-        //     parentNode.Add("*");
-        //     parentNode.Add("1");
-        //     parentNode.Add("2");
-        //     parentNode.Add(childTree);
-        //     // -------------------------------------------------------
-        //     var actualRoot = parentNode;
-        //     var testNodes = new LISPAbstractSyntaxTreeNode[]
-        //     {
-        //         grandChildTree, childTree, parentNode
-        //     };
-        //     foreach(var currentTestNode in testNodes)
-        //     {
-        //         var proposedRoot = currentTestNode.GetRootNode();
-        //         Assert.AreEqual(actualRoot, proposedRoot);
-        //     }
-        // }
+        [TestMethod]
+        public void AbstractSyntaxTreeNodeCanBuildTwoLevelTree()
+        {
+            // Ex. (* 1 2 (- 3 (+ 4)))
+            // -------------------------------------------------------
+            var parentNode = new LISPAbstractSyntaxTreeNode();
+            var childTree = new LISPAbstractSyntaxTreeNode();
+            var grandChildTree = new LISPAbstractSyntaxTreeNode();
+            // -------------------------------------------------------
+            grandChildTree.Add("+");
+            grandChildTree.Add("4");
+            childTree.Add("-");
+            childTree.Add("3");
+            childTree.Add(grandChildTree);
+            parentNode.Add("*");
+            parentNode.Add("1");
+            parentNode.Add("2");
+            parentNode.Add(childTree);
+            // -------------------------------------------------------
+            Assert.IsNull(parentNode.Parent);
+            Assert.AreEqual(childTree.Parent, parentNode);
+            Assert.AreEqual(grandChildTree.Parent, childTree);
+            // -------------------------------------------------------
+        }
 
+        private void TestChildrenTokensEqualsGivenTokenList(LISPAbstractSyntaxTreeNode ASTNode, string[] expectedTokens)
+        {
+            var childNodes = new LISPAbstractSyntaxTreeNode[](ASTNode.Children);
+        }
     }
 }
