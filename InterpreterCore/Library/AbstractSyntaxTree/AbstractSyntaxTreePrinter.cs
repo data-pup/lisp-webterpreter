@@ -30,7 +30,7 @@ namespace InterpreterCore.AbstractSyntaxTree
                 return;
             else
                 foreach(var currentChild in syntaxTree.Children)
-                    PrintSyntaxTree(currentChild);
+                    PrintSyntaxTree(currentChild, indentLevel+4);
         }
     }
 }

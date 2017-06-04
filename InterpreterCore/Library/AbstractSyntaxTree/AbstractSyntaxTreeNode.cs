@@ -33,6 +33,7 @@ namespace InterpreterCore.AbstractSyntaxTree
         public LISPAbstractSyntaxTreeNode[] Children
         {
             get { return _children.ToArray(); }
+            set { _children = new Stack<LISPAbstractSyntaxTreeNode>(value); }
         }
         public LISPAbstractSyntaxTreeNode[] Operands
         {
@@ -42,6 +43,17 @@ namespace InterpreterCore.AbstractSyntaxTree
         {
             get { return _parent; }
             set { _parent = value; }
+        }
+        public void Add(LISPAbstractSyntaxTreeNode newNode)
+        {
+            if(Token == null || Token == "")
+            {
+                Token = newNode.Token;
+                Children = newNode.Children;
+                return;
+            }
+            newNode.Parent = this;
+            _children.Push(newNode);
         }
         public void Add(string rawToken)
         {
