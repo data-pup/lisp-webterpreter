@@ -17,12 +17,7 @@ namespace ConsoleInterpreter
             parentNode.Add("+");
             parentNode.Add("1");
             parentNode.Add("2");
-            if(parentNode.Token == "+")
-                Console.WriteLine("Root token passes simple test.");
-            if(parentNode.Children[0].Token == "2")
-                Console.WriteLine("First operand passes simple test.");
-            if(parentNode.Children[1].Token == "1")
-                Console.WriteLine("Second operand passes simple test.");
+            AbstractSyntaxTreePrinter.PrintSyntaxTree(parentNode);
         }
     }
 }

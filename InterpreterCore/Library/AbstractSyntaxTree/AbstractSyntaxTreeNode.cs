@@ -19,7 +19,7 @@ namespace InterpreterCore.AbstractSyntaxTree
         public LISPAbstractSyntaxTreeNode(string token)
         {
             _token = token;
-            _children = null;
+            _children = new Stack<LISPAbstractSyntaxTreeNode>();
         }
         public string Token
         {

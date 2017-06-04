@@ -74,6 +74,15 @@ Tomorrow, finish the string[] constructor for the tree class, and implement
 validation functions for the node class. Then, finish up the arithmetic
 methods, and begin final prep for adding variables.
 
+### June 04 Notes:
+
+Now that I can create arbritrary syntax trees, I should add some supporting
+functions, including a validator and a printing function. The validator
+should check that each token is either: (1) an empty node w/ no children,
+(2) a value w/ no arguments, (3) an op w/ arguments. The printing function
+should print the tokens out in the same manner as the 'tree' CLI tool.
+
+
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
 *  Add an abstract syntax tree class. Write a constructor that will create a tree using this list.
