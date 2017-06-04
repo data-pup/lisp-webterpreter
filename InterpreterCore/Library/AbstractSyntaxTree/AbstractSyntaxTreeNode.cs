@@ -8,7 +8,7 @@ namespace InterpreterCore.AbstractSyntaxTree
     public class LISPAbstractSyntaxTreeNode
     {
         private string _token;
-        private IEnumerable<LISPAbstractSyntaxTreeNode> _children;
+        private LISPAbstractSyntaxTreeNode[] _children;
         public LISPAbstractSyntaxTreeNode()
         {
             _token = null;
@@ -19,11 +19,11 @@ namespace InterpreterCore.AbstractSyntaxTree
             _token = token;
             _children = null;
         }
-        public LISPAbstractSyntaxTreeNode(string token, IEnumerable<LISPAbstractSyntaxTreeNode> children)
-        {
-            _token = token;
-            _children = null;
-        }
+        // public LISPAbstractSyntaxTreeNode(string token, IEnumerable<LISPAbstractSyntaxTreeNode> children)
+        // {
+        //     _token = token;
+        //     _children = null;
+        // }
         public string Token
         {
             get { return _token; }
@@ -32,7 +32,16 @@ namespace InterpreterCore.AbstractSyntaxTree
         {
             get { return _token; }
         }
-        public IEnumerable<LISPAbstractSyntaxTreeNode> Children
+        public string Operator
+        {
+            get { return _token; }
+        }
+        public LISPAbstractSyntaxTreeNode[] Children
+        {
+            get { return _children; }
+            set { _children = value; }
+        }
+        public LISPAbstractSyntaxTreeNode[] Operands
         {
             get { return _children; }
             set { _children = value; }

@@ -35,15 +35,19 @@ namespace InterpreterCore.AbstractSyntaxTree
                 {   // Decrease the nesting level, check for miscmatched parentheses.
                     nestingIndex--;
                     if(nestingIndex < 0)
-                    {
+                    {   // Parentheses do not match if nesting level ever drops below 0.
                         throw new InvalidProgramException("Syntax error: Parentheses do not match.");
                     }
                     continue;
                 }
                 else
-                {
+                {   // 
                     nestedTokens[nestingIndex].Add(currentToken);
                 }
+            }
+            if(nestingIndex != 0)
+            {   // Check that the nesting index is 0 after reaching the end of the token list.
+                throw new InvalidProgramException("Syntax error: Parentheses do not match.");
             }
         }
 
@@ -52,5 +56,16 @@ namespace InterpreterCore.AbstractSyntaxTree
             get { return _root; }
             set { _root = value; }
         }
+
+        // private void AddNewNode(string token)
+        // {
+        //     LISPAbstractSyntaxTreeNode newNode;
+        //     newNode = new LISPAbstractSyntaxTreeNode(token);
+        //     if(_root == null)
+        //     {
+        //         _root = newNode;
+        //     }
+        //     _root.Children.Add(newNode);
+        // }
     }
 }

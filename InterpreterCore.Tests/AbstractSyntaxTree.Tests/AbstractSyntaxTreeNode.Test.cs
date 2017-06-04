@@ -42,7 +42,7 @@ namespace InterpreterCore.Tests
             var parentNode = new LISPAbstractSyntaxTreeNode("+");
             var childNode = new LISPAbstractSyntaxTreeNode("1");
             var children = new List<LISPAbstractSyntaxTreeNode> {childNode};
-            parentNode.Children = children;
+            parentNode.Children = children.ToArray();
             Assert.AreEqual(parentNode.Token, "+");
             Assert.AreEqual(children[0].Token, "1");
         }
@@ -57,7 +57,7 @@ namespace InterpreterCore.Tests
                 new LISPAbstractSyntaxTreeNode("2"),
             };
             var expectedChildrenTokens = new List<string> { "1", "2" };
-            parentNode.Children = children;
+            parentNode.Children = children.ToArray();
             Assert.AreEqual(parentNode.Token,"+");
             int currExpectedChildIndex = 0;
             foreach(var currentChild in children)
