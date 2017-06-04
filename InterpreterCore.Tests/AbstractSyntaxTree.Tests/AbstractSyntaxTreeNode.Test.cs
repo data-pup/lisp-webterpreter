@@ -91,36 +91,36 @@ namespace InterpreterCore.Tests
             }
         }
 
-        [TestMethod]
-        public void AbstractSyntaxTreeNodeCanReturnRootNode()
-        {
-            // Ex. (* 1 2 (- 3 (+ 4)))
-            // -------------------------------------------------------
-            var parentNode = new LISPAbstractSyntaxTreeNode();
-            var childTree = new LISPAbstractSyntaxTreeNode();
-            var grandChildTree = new LISPAbstractSyntaxTreeNode();
-            // -------------------------------------------------------
-            grandChildTree.Add("+");
-            grandChildTree.Add("4");
-            childTree.Add("-");
-            childTree.Add("3");
-            childTree.Add(grandChildTree);
-            parentNode.Add("*");
-            parentNode.Add("1");
-            parentNode.Add("2");
-            parentNode.Add(childTree);
-            // -------------------------------------------------------
-            var actualRoot = parentNode;
-            var testNodes = new LISPAbstractSyntaxTreeNode[]
-            {
-                grandChildTree, childTree, parentNode
-            };
-            foreach(var currentTestNode in testNodes)
-            {
-                var proposedRoot = currentTestNode.GetRootNode();
-                Assert.AreEqual(actualRoot, proposedRoot);
-            }
-        }
+        // [TestMethod]
+        // public void AbstractSyntaxTreeNodeCanReturnRootNode()
+        // {
+        //     // Ex. (* 1 2 (- 3 (+ 4)))
+        //     // -------------------------------------------------------
+        //     var parentNode = new LISPAbstractSyntaxTreeNode();
+        //     var childTree = new LISPAbstractSyntaxTreeNode();
+        //     var grandChildTree = new LISPAbstractSyntaxTreeNode();
+        //     // -------------------------------------------------------
+        //     grandChildTree.Add("+");
+        //     grandChildTree.Add("4");
+        //     childTree.Add("-");
+        //     childTree.Add("3");
+        //     childTree.Add(grandChildTree);
+        //     parentNode.Add("*");
+        //     parentNode.Add("1");
+        //     parentNode.Add("2");
+        //     parentNode.Add(childTree);
+        //     // -------------------------------------------------------
+        //     var actualRoot = parentNode;
+        //     var testNodes = new LISPAbstractSyntaxTreeNode[]
+        //     {
+        //         grandChildTree, childTree, parentNode
+        //     };
+        //     foreach(var currentTestNode in testNodes)
+        //     {
+        //         var proposedRoot = currentTestNode.GetRootNode();
+        //         Assert.AreEqual(actualRoot, proposedRoot);
+        //     }
+        // }
 
     }
 }
