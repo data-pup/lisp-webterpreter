@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using InterpreterCore;
+using ConsoleInterpreter.Development;
 
 namespace ConsoleInterpreter
 {
@@ -18,8 +19,8 @@ namespace ConsoleInterpreter
         {
             // Working space:
             // ----------------------------------------------------------------
-            TemporaryDevelopmentFunctions.TestingTwoLevelTree();
-            // TemporaryDevelopmentFunctions.AbstractSyntaxTreeNodeCanIdentifyIfIsRoot();
+            TestingAbstractSyntaxTreePrinter.PrintATwoLevelTree();
+            TemporaryDevelopmentFunctions.AbstractSyntaxTreeNodeCanIdentifyIfIsRoot();
             // ----------------------------------------------------------------
         }
     }
