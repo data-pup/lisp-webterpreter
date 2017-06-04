@@ -37,24 +37,36 @@ namespace InterpreterCore.Tests
         }
 
         [TestMethod]
-        public void AbstractSyntaxTreeNodeCanSetNext()
+        public void AbstractSyntaxTreeNodeChildrenCanBeSetToSingleElement()
         {
             var parentNode = new LISPAbstractSyntaxTreeNode("+");
             var childNode = new LISPAbstractSyntaxTreeNode("1");
             var children = new List<LISPAbstractSyntaxTreeNode> {childNode};
             parentNode.Children = children;
-            Assert.IsTrue(NodeListsAreEqual(children, parentNode.Children));
+            Assert.AreEqual(parentNode.Token, "+");
+            Assert.AreEqual(children[0].Token, "1");
         }
 
-        private static bool NodeListsAreEqual(ICollection<LISPAbstractSyntaxTreeNode> expectedElements,
-                                              ICollection<LISPAbstractSyntaxTreeNode> actualElements)
+        [TestMethod]
+        public void AbstractSyntaxTreeNodeChildrenCanBeSetToMultipleElements()
         {
-            foreach(var expectedElement in expectedElements)
+            var parentNode = new LISPAbstractSyntaxTreeNode("+");
+            var children = new List<LISPAbstractSyntaxTreeNode>
             {
-                if (actualElements.Contains(expectedElement) != true)
-                    return false;
+                new LISPAbstractSyntaxTreeNode("1"),
+                new LISPAbstractSyntaxTreeNode("2"),
+            };
+            var expectedChildrenTokens = new List<string> { "1", "2" };
+            parentNode.Children = children;
+            Assert.AreEqual(parentNode.Token,"+");
+            int currExpectedChildIndex = 0;
+            foreach(var currentChild in children)
+            {
+                var actualNodeToken = currentChild.Token;
+                var expectedToken = expectedChildrenTokens[currExpectedChildIndex];
+                Assert.AreEqual(expectedToken, actualNodeToken);
+                currExpectedChildIndex++;
             }
-            return true;
         }
     }
 }

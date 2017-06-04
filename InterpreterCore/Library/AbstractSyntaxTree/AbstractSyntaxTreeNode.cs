@@ -8,7 +8,7 @@ namespace InterpreterCore.AbstractSyntaxTree
     public class LISPAbstractSyntaxTreeNode
     {
         private string _token;
-        private ICollection<LISPAbstractSyntaxTreeNode> _children;
+        private IEnumerable<LISPAbstractSyntaxTreeNode> _children;
         public LISPAbstractSyntaxTreeNode()
         {
             _token = null;
@@ -19,11 +19,20 @@ namespace InterpreterCore.AbstractSyntaxTree
             _token = token;
             _children = null;
         }
+        public LISPAbstractSyntaxTreeNode(string token, IEnumerable<LISPAbstractSyntaxTreeNode> children)
+        {
+            _token = token;
+            _children = null;
+        }
         public string Token
         {
             get { return _token; }
         }
-        public ICollection<LISPAbstractSyntaxTreeNode> Children
+        public string Value
+        {
+            get { return _token; }
+        }
+        public IEnumerable<LISPAbstractSyntaxTreeNode> Children
         {
             get { return _children; }
             set { _children = value; }
