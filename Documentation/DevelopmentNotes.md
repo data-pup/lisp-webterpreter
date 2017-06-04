@@ -64,6 +64,16 @@ obsolete when operator class objects are added. These objects would have
 some sort of Token = '+' member, which could be referenced directly in lieu
 of an extra file that would also have to be modified when changing things.
 
+### June 03 Conclusion Notes:
+
+Raw input parsing is complete. Abstract syntax trees can be constructed manually
+using the Add method. Test bench has been updated, and the console module has
+an easy development switch that's currently active.
+
+Tomorrow, finish the string[] constructor for the tree class, and implement
+validation functions for the node class. Then, finish up the arithmetic
+methods, and begin final prep for adding variables.
+
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
 *  Add an abstract syntax tree class. Write a constructor that will create a tree using this list.
