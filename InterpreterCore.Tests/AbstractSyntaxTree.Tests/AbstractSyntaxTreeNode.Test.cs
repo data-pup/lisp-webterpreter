@@ -121,9 +121,21 @@ namespace InterpreterCore.Tests
             // -------------------------------------------------------
         }
 
-        private void TestChildrenTokensEqualsGivenTokenList(LISPAbstractSyntaxTreeNode ASTNode, string[] expectedTokens)
+        private void TestChildrenTokensEqualsGivenTokenList(LISPAbstractSyntaxTreeNode ASTNode, string[] expectedTokensArray)
         {
-            var childNodes = new LISPAbstractSyntaxTreeNode[](ASTNode.Children);
+            var childNodes = ASTNode.Children;
+            string[] childTokensArray = GetChildrenTokensList(ASTNode);
+            Assert.AreEqual(childTokensArray, expectedTokensArray);
+        }
+
+        private string[] GetChildrenTokensList(LISPAbstractSyntaxTreeNode ASTNode)
+        {
+            var tokensList = new List<string>();
+            foreach(var currentChild in ASTNode.Children)
+            {
+                tokensList.Add(currentChild.Token);
+            }
+            return tokensList.ToArray();
         }
     }
 }

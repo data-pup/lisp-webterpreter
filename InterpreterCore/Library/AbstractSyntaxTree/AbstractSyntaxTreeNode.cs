@@ -38,10 +38,6 @@ namespace InterpreterCore.AbstractSyntaxTree
             get { return _children.ToArray(); }
             set { _children = new Stack<LISPAbstractSyntaxTreeNode>(value); }
         }
-        public LISPAbstractSyntaxTreeNode[] Operands
-        {
-            get { return _children.ToArray(); }
-        }
         public LISPAbstractSyntaxTreeNode Parent
         {
             get { return _parent; }
@@ -79,20 +75,15 @@ namespace InterpreterCore.AbstractSyntaxTree
 
         public bool IsRoot()
         {
-            Console.WriteLine("IsRoot Called! Current Token is: {0}", Token);
             if(Parent == null)
                 return true;
-            Console.WriteLine("Parent token is: {0}", Parent.Token);
             return false;
         }
         public LISPAbstractSyntaxTreeNode GetRootNode()
         {
             var currentNode = this;
-            Console.WriteLine("Current Node Value: {0}", currentNode.Token);
             while(this.IsRoot() == false)
-                Console.WriteLine("Current Node Value: {0}", currentNode.Token);
                 currentNode =  currentNode.Parent;
-            Console.WriteLine("Returning Value: {0}", currentNode.Token);
             return currentNode;
         }
         public static bool IsOperator(string rawToken)

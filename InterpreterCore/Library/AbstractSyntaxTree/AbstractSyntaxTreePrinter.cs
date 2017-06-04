@@ -9,10 +9,11 @@ namespace InterpreterCore.AbstractSyntaxTree
     {
         private static readonly string childListLineMarker = "├──";
         private static readonly string childListLastLineMarker = "└──";
+        private static readonly int indentationIncrement = 4;
         public static void PrintSyntaxTree(LISPAbstractSyntaxTreeNode ASTNode, int indentLevel = 0)
         {
             // get indentation
-            string indentation = new string(' ', indentLevel);
+            string indentationString = GetIndendationString(ASTNode);
             string currentNodeToken = String.Concat(ASTNode.Token);
             string currentNodeLineMarker;
             // get line .marker
@@ -27,7 +28,7 @@ namespace InterpreterCore.AbstractSyntaxTree
             }
             // form token line
             string currentNodeTokenLine = String.Join(' ',
-                new List<string> {indentation, currentNodeLineMarker, currentNodeToken});
+                new List<string> {indentationString, currentNodeLineMarker, currentNodeToken});
             // print children
             Console.WriteLine(currentNodeTokenLine);
             if(ASTNode.Children == null)
@@ -39,7 +40,18 @@ namespace InterpreterCore.AbstractSyntaxTree
 
         private static string GetIndendationString(LISPAbstractSyntaxTreeNode ASTNode)
         {
-            throw new NotImplementedException();
+            bool needsIndendation = ASTNode.IsRoot();
+            needsIndendation = (needsIndendation) ?
+                needsIndendation : (needsIndendation || ASTNode.Parent.IsRoot());
+            if(needsIndendation == true)
+            {   // Children of the root node do not need to be indented.
+                return "";
+            }
+            string parentIndentationString = GetIndendationString(ASTNode.Parent);
+            string indentationWhitespace = new string(' ', indentationIncrement);
+            string indentationString = String.Concat(parentIndentationString,
+                " |", indentationWhitespace);
+            return indentationString;
         }
     }
 }

@@ -27,14 +27,14 @@ namespace ConsoleInterpreter
             parentNode.Add("2");
             parentNode.Add(childTree);
             AbstractSyntaxTreePrinter.PrintSyntaxTree(parentNode);
-            var testNodes = new LISPAbstractSyntaxTreeNode[]
+
+            var tokensList = new List<string>();
+            foreach(var currentChild in parentNode.Children)
             {
-                grandChildTree, childTree, parentNode
-            };
-            foreach(var currentTestNode in testNodes)
-            {
-                var proposedRoot = currentTestNode.GetRootNode();
+                tokensList.Add(currentChild.Token);
             }
+            var childrenTokensListString = String.Join(' ', tokensList);
+            Console.WriteLine(childrenTokensListString);
         }
         public static void AbstractSyntaxTreeNodeCanIdentifyIfIsRoot()
         {
