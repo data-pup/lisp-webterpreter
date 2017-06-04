@@ -20,6 +20,7 @@ namespace InterpreterCore.AbstractSyntaxTree
         {
             _token = token;
             _children = new Stack<LISPAbstractSyntaxTreeNode>();
+            _parent = null;
         }
         public string Token
         {
@@ -71,6 +72,16 @@ namespace InterpreterCore.AbstractSyntaxTree
             if(_parent == null)
                 return true;
             return false;
+        }
+        public LISPAbstractSyntaxTreeNode GetRootNode()
+        {
+            var currentNode = this;
+            Console.WriteLine("Current Node Value: {0}", currentNode.Token);
+            while(this.IsRoot() == false)
+                Console.WriteLine("Current Node Value: {0}", currentNode.Token);
+                currentNode =  currentNode.Parent;
+            Console.WriteLine("Returning Value: {0}", currentNode.Token);
+            return currentNode;
         }
         public static bool IsOperator(string rawToken)
         {
