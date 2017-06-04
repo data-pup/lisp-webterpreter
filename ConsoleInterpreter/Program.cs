@@ -18,7 +18,7 @@ namespace ConsoleInterpreter
         {
             // Working space:
             // ----------------------------------------------------------------
-            TemporaryDevelopmentFunctions.Temp();
+            TemporaryDevelopmentFunctions.TempBootstrap();
             // ----------------------------------------------------------------
         }
     }

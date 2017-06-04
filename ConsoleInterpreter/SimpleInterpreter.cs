@@ -29,7 +29,7 @@ namespace ConsoleInterpreter
             Console.Write(promptString);
         }
 
-        private static void PrintParsedExpression(string[] parsedExpression)
+        public static void PrintParsedExpression(string[] parsedExpression)
         {
             var parsedExpressionString = String.Join(",\t", parsedExpression);
             Console.WriteLine("Result: {0}", parsedExpressionString);
