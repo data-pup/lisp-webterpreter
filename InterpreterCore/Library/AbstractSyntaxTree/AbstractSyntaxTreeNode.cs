@@ -28,12 +28,14 @@ namespace InterpreterCore.AbstractSyntaxTree
             _children = new Stack<LISPAbstractSyntaxTreeNode>();
             _parent = null;
             string currentToken;
+            int nestingDepth = 0;
             for(int currentTokenIndex = 0; currentTokenIndex < syntaxTokens.Length;
                                            currentTokenIndex++)
             {
                 currentToken = syntaxTokens[currentTokenIndex];
                 if(currentToken == "(")
                 {
+                    nestingDepth++;
                     string[] splitExpression = GetNestedExpression(
                         syntaxTokens, currentTokenIndex);
                     var newNestedExpression = new LISPAbstractSyntaxTreeNode(splitExpression);
@@ -42,9 +44,13 @@ namespace InterpreterCore.AbstractSyntaxTree
                     continue;
                 }
                 else if(currentToken == ")")
-                    break;
+                    nestingDepth--;
                 else
                     Add(currentToken);
+            }
+            if(nestingDepth != 0)
+            {
+                throw new InvalidProgramException("Unexpected ')' found.");
             }
         }
 
