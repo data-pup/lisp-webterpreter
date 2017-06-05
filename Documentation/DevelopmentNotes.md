@@ -82,6 +82,19 @@ should check that each token is either: (1) an empty node w/ no children,
 (2) a value w/ no arguments, (3) an op w/ arguments. The printing function
 should print the tokens out in the same manner as the 'tree' CLI tool.
 
+### June 04 Conclusion Notes:
+
+Proof of concept is working! The interpreter environment in its current
+configuration will now print out the abstract syntax tree that was read
+using the input from the client. That's really cool!
+
+The next thing to do is to add some functionality to resolve each node.
+This means that a node tha that stores a value should return the value,
+and a node with an operator and arguments should pop the elements off
+the stack, and resolve using the operation function.
+
+Variable symbols can be resolved before this stage, which would mean
+traversing the tree and replacing tokens with a stored value.
 
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
