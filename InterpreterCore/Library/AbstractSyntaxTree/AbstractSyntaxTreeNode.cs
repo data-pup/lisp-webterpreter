@@ -81,6 +81,11 @@ namespace InterpreterCore.AbstractSyntaxTree
             }
         }
 
+        public void Push(string rawToken)
+        {
+            Add(rawToken);
+        }
+
         public bool IsRoot()
         {
             if(Parent == null)
