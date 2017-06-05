@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using InterpreterCore;
+using InterpreterCore.AbstractSyntaxTree;
 
 namespace ConsoleInterpreter
 {
@@ -21,6 +22,21 @@ namespace ConsoleInterpreter
                 clientInput = Console.ReadLine();
                 var parsedExpression = _testInterpreter.ParseInputLine(clientInput);
                 PrintParsedExpression(parsedExpression);
+            }
+        }
+
+        public void StartASTDebugRuntime()
+        {
+            string clientInput;
+            var _testInterpreter = new LISPInterpreterCore();
+            LISPAbstractSyntaxTreeNode _testAbstractSyntaxTree;
+            while(true)
+            {
+                PrintPromptString(promptString);
+                clientInput = Console.ReadLine();
+                var parsedExpression = _testInterpreter.ParseInputLine(clientInput);
+                _testAbstractSyntaxTree = new LISPAbstractSyntaxTreeNode(parsedExpression);
+                AbstractSyntaxTreePrinter.PrintSyntaxTree(_testAbstractSyntaxTree);
             }
         }
 

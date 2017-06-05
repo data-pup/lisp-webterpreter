@@ -9,10 +9,11 @@ namespace ConsoleInterpreter
     {
         static void Main(string[] args)
         {
-            DevelopmentMain(args);
-            // Console.WriteLine("Initializing LISP Interpreter Core Module...");
-            // var _SimpleInterpreter = new SimpleInterpreter();
+            // DevelopmentMain(args);
+            Console.WriteLine("Initializing LISP Interpreter Core Module...");
+            var _SimpleInterpreter = new SimpleInterpreter();
             // _SimpleInterpreter.StartRuntime();
+            _SimpleInterpreter.StartASTDebugRuntime();
         }
 
         private static void DevelopmentMain(string[] args)
@@ -21,7 +22,7 @@ namespace ConsoleInterpreter
             // ----------------------------------------------------------------
             // TestingAbstractSyntaxTreePrinter.PrintATwoLevelTree();
             // TestingAbstractSyntaxTreePrinter.PrintAThreeLevelTree();
-            TemporaryDevelopmentFunctions.TestingParsingTokensNestedRecursion();
+            // TemporaryDevelopmentFunctions.TestingParsingTokensNestedRecursion();
             // ----------------------------------------------------------------
         }
     }
