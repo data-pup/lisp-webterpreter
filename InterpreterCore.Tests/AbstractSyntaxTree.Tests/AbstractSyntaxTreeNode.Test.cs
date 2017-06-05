@@ -123,6 +123,13 @@ namespace InterpreterCore.Tests
             // -------------------------------------------------------
         }
 
+        [TestMethod]
+        public void AbstractSyntaxTreeNodeArrayConstructorHandlesSimpleExpression()
+        {
+            var expressionTokens = new string[] {"(", "1", ")"};
+            var testTree = new LISPAbstractSyntaxTreeNode(expressionTokens);
+        }
+
         private void TestChildrenTokensEqualsGivenTokenList(LISPAbstractSyntaxTreeNode ASTNode, string[] expectedTokensArray)
         {
             var childNodes = ASTNode.Children;

@@ -25,42 +25,27 @@ namespace InterpreterCore.AbstractSyntaxTree
         }
         public LISPAbstractSyntaxTreeNode(string[] syntaxTokens)
         {
-            throw new NotImplementedException();
-            // int nestingDepth = 1;
-            // int currTokenIndex = 1;
-            // var expressionTokenList = new List<string>();
-            // var remainingTokenList = new List<string>();
-            // bool hasPassedMatchingEnclosure = false;
-            // while (currTokenIndex < syntaxTokens.Length)
-            // {
-            //     string currToken = syntaxTokens[currTokenIndex];
-            //     if(currToken == "(")
-            //     {
-            //         expressionTokenList.Add(currToken);
-            //         nestingDepth++; // Recursion goes here.
-            //         continue;
-            //     }
-            //     else
-            //     {
-            //         if(currToken == ")")
-            //         {
-            //             Console.WriteLine("Depth: {0}", nestingDepth);
-            //             nestingDepth--;
-            //             if(nestingDepth == 0)
-            //             {
-            //                 Console.WriteLine("Matching outer brace found at position {0}", currTokenIndex);
-            //                 hasPassedMatchingEnclosure = true;
-            //                 currTokenIndex++;
-            //                 continue;
-            //             }
-            //         }
-            //         if(hasPassedMatchingEnclosure == false)
-            //             expressionTokenList.Add(currToken);
-            //         else
-            //             remainingTokenList.Add(currToken);
-            //     }
-            //     currTokenIndex++;
-            // }
+            _children = new Stack<LISPAbstractSyntaxTreeNode>();
+            _parent = null;
+            string currentToken;
+            for(int currentTokenIndex = 0; currentTokenIndex < syntaxTokens.Length;
+                                           currentTokenIndex++)
+            {
+                currentToken = syntaxTokens[currentTokenIndex];
+                if(currentToken == "(")
+                {
+                    string[] splitExpression = GetNestedExpression(
+                        syntaxTokens, currentTokenIndex);
+                    var newNestedExpression = new LISPAbstractSyntaxTreeNode(splitExpression);
+                    Add(newNestedExpression);
+                    currentTokenIndex += splitExpression.Length;
+                    continue;
+                }
+                else if(currentToken == ")")
+                    break;
+                else
+                    Add(currentToken);
+            }
         }
 
         public string Token
@@ -141,25 +126,47 @@ namespace InterpreterCore.AbstractSyntaxTree
             return false;
         }
 
-        // private static Tuple<string[],string[]> SplitNestedExpressionToken(string[] rawTokens)
-        // {
-        //     if(rawTokens == null)
-        //     {
-        //         throw new NullReferenceException("Null token array given to SplitNestedExpressionToken.");
-        //     }
-        //     if(rawTokens.Length < 2)
-        //     {
-        //         throw new InvalidProgramException("Token list is missing parentheses.");
-        //     }
-        //     if(rawTokens[0] != "(")
-        //     {
-        //         throw new InvalidOperationException("Unexpected first token in SplitNestedExpressionToken.");
-        //     }
-        //     int nestingDepth = 1;
-        //     for (int tokenIndex = 1; tokenIndex < rawTokens.Length; tokenIndex++)
-        //     {
-        //         //
-        //     }
-        // }
+        private static string[] GetNestedExpression(string[] syntaxTokens, int startingIndex=0)
+        {
+            if(syntaxTokens == null)
+            {
+                throw new NullReferenceException("Null token array given to SplitNestedExpressionToken.");
+            }
+            if(startingIndex < 0 || startingIndex >= syntaxTokens.Length - 1)
+            {
+                throw new InvalidProgramException("SplitNestedExpressionToken starting index out of bounds.");
+            }
+            if(syntaxTokens[startingIndex] != "(")
+            {
+                throw new InvalidProgramException("Nested expression was not found in syntax token array.");
+            }
+            int nestingDepth = 1;
+            int currTokenIndex = startingIndex + 1;
+            var expressionTokenList = new List<string>();
+            while (currTokenIndex < syntaxTokens.Length)
+            {
+                string currToken = syntaxTokens[currTokenIndex];
+                if(currToken == "(")
+                {
+                    nestingDepth++; // Recursion goes here.
+                    expressionTokenList.Add(currToken);
+                    currTokenIndex++;
+                    continue;
+                }
+                else
+                {
+                    if(currToken == ")")
+                    {
+                        nestingDepth--;
+                        if(nestingDepth == 0)
+                            break;
+                    }
+                    expressionTokenList.Add(currToken);
+                }
+                currTokenIndex++;
+            }
+            string[] expressionTokenArray = expressionTokenList.ToArray();
+            return expressionTokenArray;
+        }
     }
 }
