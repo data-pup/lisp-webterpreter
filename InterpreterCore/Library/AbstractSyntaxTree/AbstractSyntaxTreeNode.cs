@@ -23,9 +23,44 @@ namespace InterpreterCore.AbstractSyntaxTree
             _children = new Stack<LISPAbstractSyntaxTreeNode>();
             _parent = null;
         }
-        public LISPAbstractSyntaxTreeNode(string[] token)
+        public LISPAbstractSyntaxTreeNode(string[] syntaxTokens)
         {
             throw new NotImplementedException();
+            // int nestingDepth = 1;
+            // int currTokenIndex = 1;
+            // var expressionTokenList = new List<string>();
+            // var remainingTokenList = new List<string>();
+            // bool hasPassedMatchingEnclosure = false;
+            // while (currTokenIndex < syntaxTokens.Length)
+            // {
+            //     string currToken = syntaxTokens[currTokenIndex];
+            //     if(currToken == "(")
+            //     {
+            //         expressionTokenList.Add(currToken);
+            //         nestingDepth++; // Recursion goes here.
+            //         continue;
+            //     }
+            //     else
+            //     {
+            //         if(currToken == ")")
+            //         {
+            //             Console.WriteLine("Depth: {0}", nestingDepth);
+            //             nestingDepth--;
+            //             if(nestingDepth == 0)
+            //             {
+            //                 Console.WriteLine("Matching outer brace found at position {0}", currTokenIndex);
+            //                 hasPassedMatchingEnclosure = true;
+            //                 currTokenIndex++;
+            //                 continue;
+            //             }
+            //         }
+            //         if(hasPassedMatchingEnclosure == false)
+            //             expressionTokenList.Add(currToken);
+            //         else
+            //             remainingTokenList.Add(currToken);
+            //     }
+            //     currTokenIndex++;
+            // }
         }
 
         public string Token
