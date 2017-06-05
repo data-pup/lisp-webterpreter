@@ -19,9 +19,9 @@ namespace ConsoleInterpreter
         {
             // Working space:
             // ----------------------------------------------------------------
-            TestingAbstractSyntaxTreePrinter.PrintATwoLevelTree();
-            TestingAbstractSyntaxTreePrinter.PrintAThreeLevelTree();
-            TemporaryDevelopmentFunctions.AbstractSyntaxTreeNodeCanIdentifyIfIsRoot();
+            // TestingAbstractSyntaxTreePrinter.PrintATwoLevelTree();
+            // TestingAbstractSyntaxTreePrinter.PrintAThreeLevelTree();
+            TemporaryDevelopmentFunctions.CreateASimpleTreeWithStringArrayConstructor();
             // ----------------------------------------------------------------
         }
     }
