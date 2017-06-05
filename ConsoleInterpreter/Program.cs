@@ -20,6 +20,7 @@ namespace ConsoleInterpreter
             // Working space:
             // ----------------------------------------------------------------
             TestingAbstractSyntaxTreePrinter.PrintATwoLevelTree();
+            TestingAbstractSyntaxTreePrinter.PrintAThreeLevelTree();
             TemporaryDevelopmentFunctions.AbstractSyntaxTreeNodeCanIdentifyIfIsRoot();
             // ----------------------------------------------------------------
         }

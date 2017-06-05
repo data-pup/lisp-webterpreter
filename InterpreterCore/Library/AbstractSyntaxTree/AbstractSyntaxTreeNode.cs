@@ -23,6 +23,10 @@ namespace InterpreterCore.AbstractSyntaxTree
             _children = new Stack<LISPAbstractSyntaxTreeNode>();
             _parent = null;
         }
+        public LISPAbstractSyntaxTreeNode(string[] token)
+        {
+            throw new NotImplementedException();
+        }
 
         public string Token
         {
