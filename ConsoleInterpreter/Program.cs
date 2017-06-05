@@ -21,7 +21,7 @@ namespace ConsoleInterpreter
             // ----------------------------------------------------------------
             // TestingAbstractSyntaxTreePrinter.PrintATwoLevelTree();
             // TestingAbstractSyntaxTreePrinter.PrintAThreeLevelTree();
-            TemporaryDevelopmentFunctions.CreateASimpleTreeWithStringArrayConstructor();
+            TemporaryDevelopmentFunctions.TestingParsingTokensNestedRecursion();
             // ----------------------------------------------------------------
         }
     }

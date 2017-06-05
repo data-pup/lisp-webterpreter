@@ -105,5 +105,26 @@ namespace InterpreterCore.AbstractSyntaxTree
                 return true;
             return false;
         }
+
+        // private static Tuple<string[],string[]> SplitNestedExpressionToken(string[] rawTokens)
+        // {
+        //     if(rawTokens == null)
+        //     {
+        //         throw new NullReferenceException("Null token array given to SplitNestedExpressionToken.");
+        //     }
+        //     if(rawTokens.Length < 2)
+        //     {
+        //         throw new InvalidProgramException("Token list is missing parentheses.");
+        //     }
+        //     if(rawTokens[0] != "(")
+        //     {
+        //         throw new InvalidOperationException("Unexpected first token in SplitNestedExpressionToken.");
+        //     }
+        //     int nestingDepth = 1;
+        //     for (int tokenIndex = 1; tokenIndex < rawTokens.Length; tokenIndex++)
+        //     {
+        //         //
+        //     }
+        // }
     }
 }
