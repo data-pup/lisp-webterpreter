@@ -67,11 +67,13 @@ namespace InterpreterCore.Tests
             }
             var actualToken = parentNode.Token;
             Assert.AreEqual(expectedToken, actualToken);
+            Assert.IsFalse(parentNode.HasParent);
             var actualArguments = new Stack<LISPAbstractSyntaxTreeNode>(parentNode.Children);
             Assert.AreEqual(expectedArguments.Length, actualArguments.Count);
             foreach(var currentChild in actualArguments)
             {
                 Assert.IsTrue(actualArguments.Contains(currentChild));
+                Assert.IsTrue(currentChild.HasParent);
                 Assert.AreEqual(currentChild.Parent, parentNode);
             }
         }

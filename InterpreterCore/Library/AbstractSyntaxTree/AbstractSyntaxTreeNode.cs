@@ -47,6 +47,10 @@ namespace InterpreterCore.AbstractSyntaxTree
             get { return _parent; }
             set { _parent = value; }
         }
+        public bool HasParent
+        {
+            get { return !IsRoot(); }
+        }
 
         public void Add(LISPAbstractSyntaxTreeNode newNode)
         {
