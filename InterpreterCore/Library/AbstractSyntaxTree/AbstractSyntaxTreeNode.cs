@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using InterpreterCore.Classes;
 
-namespace InterpreterCore.AbstractSyntaxTree
+namespace InterpreterCore.Classes.AbstractSyntaxTree
 {
     public class LISPAbstractSyntaxTreeNode
     {

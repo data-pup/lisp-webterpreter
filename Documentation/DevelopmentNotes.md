@@ -96,6 +96,22 @@ the stack, and resolve using the operation function.
 Variable symbols can be resolved before this stage, which would mean
 traversing the tree and replacing tokens with a stored value.
 
+### June 05 Notes
+
+Revised and refactored code from the weekend. The tree constructor accepting
+a string array and the supporting method were separated into private static
+helper methods. This improved the readability of the code, so that looping
+constructs did not become too complex. Hooray!
+
+I cleaned up the tree class, the commented out code that had been left in the
+file was obsolete at this point, as it was logic that was redundant to the
+node constructor implemented and discussed above. Hooray for encapsulation!
+
+The abstract syntax tree class will cater to a higher-level of level of
+abstraction, and should be much more simplistic. The node class implements
+the recursive logic and so forth, the tree class itself should handle checking
+if the expression is valid, resolving symbol names, and so forth.
+
 ### TODO List:
 *  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
 *  Add an abstract syntax tree class. Write a constructor that will create a tree using this list.

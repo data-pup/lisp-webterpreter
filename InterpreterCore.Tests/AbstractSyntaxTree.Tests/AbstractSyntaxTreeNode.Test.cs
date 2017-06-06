@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-using InterpreterCore.AbstractSyntaxTree;
+using InterpreterCore.Classes.AbstractSyntaxTree;
 using InterpreterCore.Tests.TestCases;
 
 namespace InterpreterCore.Tests

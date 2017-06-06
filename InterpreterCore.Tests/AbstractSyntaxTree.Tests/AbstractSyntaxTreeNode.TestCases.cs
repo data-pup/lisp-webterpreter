@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using InterpreterCore.AbstractSyntaxTree;
+using InterpreterCore.Classes.AbstractSyntaxTree;
 
 namespace InterpreterCore.Tests.TestCases
 {

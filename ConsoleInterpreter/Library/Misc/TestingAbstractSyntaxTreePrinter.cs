@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using InterpreterCore;
-
-using InterpreterCore.AbstractSyntaxTree;
+using InterpreterCore.Classes.AbstractSyntaxTree;
 
 namespace ConsoleInterpreter.Development
 {
