@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-using InterpreterCore.Classes;
+using InterpreterCore.Classes.Lisp;
 
 namespace InterpreterCore.Tests
 {

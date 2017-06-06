@@ -1,4 +1,4 @@
-namespace InterpreterCore.Classes
+namespace InterpreterCore.Classes.Lisp
 {
     public class LISPAtom<T>
     {

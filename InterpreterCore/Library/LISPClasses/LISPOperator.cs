@@ -1,8 +1,7 @@
 // using System;
 // using System.Collections.Generic;
 
-// using InterpreterCore.Classes;
-// using InterpreterCore.Operators.Math;
+// using InterpreterCore.Classes.Lisp;
 
 // namespace InterpreterCore.Operators
 // {
