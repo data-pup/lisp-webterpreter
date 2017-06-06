@@ -26,13 +26,5 @@ namespace InterpreterCore
         {
             return new string[] {"hello", "world"};
         }
-
-        private void InstantiateOperators()
-        // private ICollection<string> InstantiateOperators()
-        {
-            // return new ICollection<string>
-            // {
-            // }
-        }
     }
 }
