@@ -33,21 +33,19 @@ namespace InterpreterCore.AbstractSyntaxTree
                                            currentTokenIndex++)
             {
                 currentToken = syntaxTokens[currentTokenIndex];
+                nestingDepth = GetCurrentExpressionNestingDepth(currentToken, nestingDepth);
                 if(currentToken == "(")
-                {
-                    nestingDepth++;
-                    string[] splitExpression = GetNestedExpression(
-                        syntaxTokens, currentTokenIndex);
+                {   // If a nested expression is encountered, parse the expression and create a new node.
+                    string[] splitExpression = GetNestedExpression(syntaxTokens, currentTokenIndex);
                     var newNestedExpression = new LISPAbstractSyntaxTreeNode(splitExpression);
-                    Add(newNestedExpression);
+                    Add(newNestedExpression); // Add the node created using the nested expression.
                     currentTokenIndex += splitExpression.Length;
                     continue;
                 }
-                else if(currentToken == ")")
-                    nestingDepth--;
-                else
+                else if(currentToken != ")")
                     Add(currentToken);
             }
+            // Check that any nested parentheses were balanced.
             if(nestingDepth != 0)
             {
                 throw new InvalidProgramException("Unexpected ')' found.");
