@@ -11,6 +11,12 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
         private static readonly int indentationIncrement = 4;
         public static void PrintSyntaxTree(LISPAbstractSyntaxTreeNode ASTNode)
         {
+            if(ASTNode == null)
+            {
+                throw new NullReferenceException();
+            }
+            else if(ASTNode.IsEmpty())
+                return;
             PrintCurrentNodeTokenWithIndentation(ASTNode);
             if(ASTNode.Children != null)
             {   // Print any nodes descending from the current node.
