@@ -1,7 +1,8 @@
-using System;
-using System.Collections.Generic;
+using ConsoleInterpreter.InterpreterGreeting;
 using InterpreterCore;
 using InterpreterCore.Classes.AbstractSyntaxTree;
+using System;
+using System.Collections.Generic;
 
 namespace ConsoleInterpreter
 {
@@ -27,9 +28,12 @@ namespace ConsoleInterpreter
 
         public void StartASTDebugRuntime()
         {
+            InterpreterGreeting.Greeting.PrintIntroductoryBanner();
+            // Create objects needed for the runtime.
             string clientInput;
             var _testInterpreter = new LISPInterpreterCore();
             LISPAbstractSyntaxTreeNode _testAbstractSyntaxTree;
+            // Begin the simple interpreter runtime.
             while(true)
             {
                 PrintPromptString(promptString);

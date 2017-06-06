@@ -11,6 +11,7 @@ namespace ConsoleInterpreter
         {
             // DevelopmentMain(args);
             Console.WriteLine("Initializing LISP Interpreter Core Module...");
+            Console.WriteLine("--------------------------------------------");
             var _SimpleInterpreter = new SimpleInterpreter();
             // _SimpleInterpreter.StartRuntime();
             _SimpleInterpreter.StartASTDebugRuntime();
