@@ -7,46 +7,45 @@ namespace InterpreterCore.AbstractSyntaxTree
 {
     public class AbstractSyntaxTreePrinter
     {
-        private static readonly string childListLineMarker = "├──";
-        private static readonly string childListLastLineMarker = "└──";
+        private static readonly string lineMarker = "├──";
         private static readonly int indentationIncrement = 4;
-        public static void PrintSyntaxTree(LISPAbstractSyntaxTreeNode ASTNode, int indentLevel = 0)
+        public static void PrintSyntaxTree(LISPAbstractSyntaxTreeNode ASTNode)
         {
-            // get indentation
-            string indentationString = GetIndendationString(ASTNode);
-            string currentNodeToken = String.Concat(ASTNode.Token);
-            string currentNodeLineMarker;
-            // get line .marker
-            if(ASTNode.Parent == null)
-                currentNodeLineMarker = "";
-            else
-            {
-                if(ASTNode == ASTNode.Parent.Children[ASTNode.Parent.Children.Length - 1])
-                    currentNodeLineMarker = childListLastLineMarker;
-                else
-                    currentNodeLineMarker = childListLineMarker;
-            }
-            // form token line
-            string currentNodeTokenLine = String.Join(' ',
-                new List<string> {indentationString, currentNodeLineMarker, currentNodeToken});
-            // print children
-            Console.WriteLine(currentNodeTokenLine);
-            if(ASTNode.Children == null)
-                return;
-            else
+            PrintCurrentNodeTokenWithIndentation(ASTNode);
+            if(ASTNode.Children != null)
+            {   // Print any nodes descending from the current node.
                 foreach(var currentChild in ASTNode.Children)
-                    PrintSyntaxTree(currentChild, indentLevel+4);
+                    PrintSyntaxTree(currentChild);
+            }
         }
 
+        /// <summary>
+        /// The method will print the current node token to the console,
+        /// with indentation generated using GetIndendationString.
+        /// </summary>
+        private static void PrintCurrentNodeTokenWithIndentation(LISPAbstractSyntaxTreeNode ASTNode)
+        {
+            string currentNodeToken = ASTNode.Token;
+            string indentationString = GetIndendationString(ASTNode);
+            string currentNodeTokenLine = String.Join(' ',
+                new List<string> {indentationString, lineMarker, currentNodeToken});
+            Console.WriteLine(currentNodeTokenLine);
+        }
+
+        /// <summary>
+        /// This method will return the whitespace that should preface a token
+        /// when printing abstract syntax trees in a human readable format.
+        /// </summary>
         private static string GetIndendationString(LISPAbstractSyntaxTreeNode ASTNode)
         {
-            bool needsIndendation = ASTNode.IsRoot();
-            needsIndendation = (needsIndendation) ?
-                needsIndendation : (needsIndendation || ASTNode.Parent.IsRoot());
-            if(needsIndendation == true)
-            {   // Children of the root node do not need to be indented.
+            // Check if the node is the root, or a direct descendent of the root.
+            bool doesNotNeedIndendation = ASTNode.IsRoot();
+            doesNotNeedIndendation = (doesNotNeedIndendation) ? doesNotNeedIndendation : ASTNode.Parent.IsRoot();
+            if(doesNotNeedIndendation)
+            {   // If so, there is no need to indent. Return an empty string.
                 return "";
             }
+            // Find the parent's indentation and form an indentation string.
             string parentIndentationString = GetIndendationString(ASTNode.Parent);
             string indentationWhitespace = new string(' ', indentationIncrement);
             string indentationString = String.Concat(parentIndentationString,

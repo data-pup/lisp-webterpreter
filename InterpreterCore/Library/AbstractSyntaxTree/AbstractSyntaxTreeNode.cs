@@ -80,7 +80,7 @@ namespace InterpreterCore.AbstractSyntaxTree
 
         public void Add(LISPAbstractSyntaxTreeNode newNode)
         {
-            if(Token == null || Token == "")
+            if(IsEmpty())
             {
                 Token = newNode.Token;
                 Children = newNode.Children;
@@ -95,7 +95,7 @@ namespace InterpreterCore.AbstractSyntaxTree
 
         public void Add(string rawToken)
         {
-            if(Token == null || Token == "")
+            if(IsEmpty())
             {
                 Token = rawToken;
                 return;
@@ -115,6 +115,12 @@ namespace InterpreterCore.AbstractSyntaxTree
         public bool IsRoot()
         {
             if(Parent == null)
+                return true;
+            return false;
+        }
+        public bool IsEmpty()
+        {
+            if( (Token == null || Token == "") && (Children.Length == 0) )
                 return true;
             return false;
         }
