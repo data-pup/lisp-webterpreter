@@ -18,13 +18,5 @@ namespace InterpreterCore
         {
             return RawInputParser.ParseExpressionIntoList(inputLine);
         }
-
-        /// <summary>
-        /// Pass an array the the client, for debugging purposes.
-        /// </summary>
-        public string[] Greet()
-        {
-            return new string[] {"hello", "world"};
-        }
     }
 }
