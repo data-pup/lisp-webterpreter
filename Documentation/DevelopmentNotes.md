@@ -158,3 +158,17 @@ Other prep goals:
     understanding all of this right.
   - Implement the list atom's operator methods. These will be needed to
     implement operator functions that accept an IEnumerable parameter.
+
+### June 06 Conclusion Notes
+
+Tonight was largely about cleaning up. Different inital drafts of classes
+had been laying around in placeholder files, early testing functions, etc.
+were removed. Now that the syntax tree class is functional, these placeholders
+were outdated. These should be built against the new changes that have been
+made.
+
+I _have_ added one placeholder however, that being the LISPList class. This
+will help with the resolve function described above. Going through the
+atom class, I also noted that the object needs a type argument when being
+created. This might play a role in the list class.
+
