@@ -1,6 +1,10 @@
 ### May 29 Notes:
 
-Test bench has been configured, proof of connection & instantiation of core module within console application is working. More work to do tomorrow with regards to splitting syntactically relevant tokens in raw tokens to generate a flat syntax list, before checking for matching parentheses, operand counts, and (eventually) symbols.
+Test bench has been configured, proof of connection & instantiation of core
+module within console application is working. More work to do tomorrow with
+regards to splitting syntactically relevant tokens in raw tokens to generate
+a flat syntax list, before checking for matching parentheses, operand counts,
+and (eventually) symbols.
 
 ### Jun 01 Notes:
 
@@ -96,7 +100,7 @@ the stack, and resolve using the operation function.
 Variable symbols can be resolved before this stage, which would mean
 traversing the tree and replacing tokens with a stored value.
 
-### June 05 Notes
+### June 05 Notes:
 
 Revised and refactored code from the weekend. The tree constructor accepting
 a string array and the supporting method were separated into private static
@@ -112,6 +116,45 @@ abstraction, and should be much more simplistic. The node class implements
 the recursive logic and so forth, the tree class itself should handle checking
 if the expression is valid, resolving symbol names, and so forth.
 
-### TODO List:
-*  Begin drafting documents for a docs/ directory, explaining the architecture of the parsing class.
-*  Add an abstract syntax tree class. Write a constructor that will create a tree using this list.
+### June 06 Notes:
+
+The node class should expose a method, Resolve() that will return the result
+of the expression in a LISPAtom object. Once this is accomplished, the tree
+class will expose a Resolve() method as well. This will invoke the root node's
+Resolve() method and return the result.
+
+The node resolve method should handle each individual node roughly like this:
+  if the node is empty:
+    resolve either 0 or null (This is a design decision to consider.)
+  if the node has no children:
+    use the token value to create a new atom (symbols resolved here?)
+    return the new atom
+  if the node has children:
+    the token value must be a valid operator character.
+    resolve the operator charactor, get a Func<IEnumerable<Atom>,Atom> function.
+    create a lisp list object,
+    for each child node:
+      add child.Resolve() to the list
+    pass the list to the operator function, and return the result.
+
+Todo: complete an overview document, initialize a gist for collaborative work.
+add links to classes that will be worked on, and (2) potential tasks:
+1. Add a symbol resolver, which will allow for variable names to
+be replaced at runtime with a value. This will require implementing
+an assignment operator.
+2.  Implement operators in a manner that will allow for both integers and
+floating point numbers to be resolved. Should this be done using public static
+generic methods?
+
+Other prep goals:
+  - Add some interface classes that the lisp classes will implement.
+    This will help code readability, as the classes are designed around
+    an easily-referenced spec.
+  - InterpreterCore module could benefit from more clean-up and revision.
+    While working on the console interpreter I learned some new things about
+    how the namespace system works. Using statements can be removed if I
+    name things correctly. This is also convenient because it means that
+    the console interpreter will only need one using statement, if I am
+    understanding all of this right.
+  - Implement the list atom's operator methods. These will be needed to
+    implement operator functions that accept an IEnumerable parameter.
