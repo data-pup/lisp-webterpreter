@@ -172,3 +172,18 @@ will help with the resolve function described above. Going through the
 atom class, I also noted that the object needs a type argument when being
 created. This might play a role in the list class.
 
+### June 07 Notes
+
+I added content to documentation and readme files, made some minor formatting
+revisions where needed. I noticed an architectural change that should be
+carried out, but it will require changing the top layer in the core module.
+
+The primary public method for the interpreter should not return a string
+array. This is reflective of the earlier versions of this project, and
+can be cleaned up. The function should accept a string parameter and
+return an abstract syntax tree object representing the input expression.
+
+However, I identified an problem with the interpreter environment when
+testing it out. Aborting upon an exception is good, but the interpreter
+itself should handle the exception and present a clean prompt.
+
