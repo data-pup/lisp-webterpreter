@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-// using InterpreterCore.Classes.Lisp;
-
 namespace InterpreterCore.Classes.AbstractSyntaxTree
 {
     public class AbstractSyntaxTreePrinter
     {
         private static readonly string lineMarker = "├──";
         private static readonly int indentationIncrement = 4;
+
         public static void PrintSyntaxTree(LISPAbstractSyntaxTreeNode ASTNode)
         {
             if(ASTNode == null)

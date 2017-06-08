@@ -8,6 +8,7 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
     public class LISPAbstractSyntaxTree
     {
         private LISPAbstractSyntaxTreeNode _root;
+
         public LISPAbstractSyntaxTree()
         {
             _root = new LISPAbstractSyntaxTreeNode();
@@ -16,6 +17,7 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
         {
             _root = new LISPAbstractSyntaxTreeNode(syntaxTokens);
         }
+
         public LISPAbstractSyntaxTreeNode Root
         {
             get { return _root; }

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-// using InterpreterCore.Classes.Lisp;
-
 namespace InterpreterCore.Classes.AbstractSyntaxTree
 {
     public class LISPAbstractSyntaxTreeNode
@@ -40,7 +38,6 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
                     var newNestedExpression = new LISPAbstractSyntaxTreeNode(splitExpression);
                     Add(newNestedExpression); // Add the node created using the nested expression.
                     currentTokenIndex += splitExpression.Length;
-                    continue;
                 }
                 else if(currentToken != ")")
                     Add(currentToken);
