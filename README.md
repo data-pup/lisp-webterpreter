@@ -2,6 +2,8 @@
 
 This project is a C# implementation of a LISP interpreter, built using .NET Core 2.0.
 
+A public Gist for collaborative work on this repository can be found [here.](https://gist.github.com/dbkvn/8636891f16ccff81149e277ea6cb2363)
+
 ## InterpreterCore/
 
 This is the core logic module for the interpreter application. This project
