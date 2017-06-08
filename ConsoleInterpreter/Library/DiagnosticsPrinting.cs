@@ -17,12 +17,15 @@ namespace ConsoleInterpreter.Diagnostics
         {
             var modules = _assembly.GetModules();
             Console.WriteLine("Assembly Modules:");
-            foreach(var currModule in modules)
+            foreach(var currentModule in modules)
             {
-                Console.WriteLine("\t{0}", currModule.Name);
-                Console.WriteLine("\t{0}", currModule.FullyQualifiedName);
-                Console.WriteLine("\t{0}", currModule.ModuleVersionId);
-                // Console.WriteLine("\t{0}", );
+                string currentModuleName = currentModule.Name;
+                string currentModuleFullName = currentModule.FullyQualifiedName;
+                var currentModuleVersion = currentModule.ModuleVersionId;
+                var currentModuleVersionString = currentModuleVersion.ToString();
+                Console.WriteLine("\t{0}", currentModuleName);
+                Console.WriteLine("\t{0}", currentModuleFullName);
+                Console.WriteLine("\t{0}", currentModule.ModuleVersionId);
             }
         }
     }
