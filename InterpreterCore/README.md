@@ -1,3 +1,1 @@
-# InterpreterCore Overview
-
-This module is a class library project, that evaluates Lisp expressions.
+This module contains helper classes that implement a lisp parser.
