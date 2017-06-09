@@ -6,24 +6,24 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
     public class LISPAbstractSyntaxTreeNode
     {
         private string _token;
-        private Stack<LISPAbstractSyntaxTreeNode> _children;
+        private List<LISPAbstractSyntaxTreeNode> _children;
         private LISPAbstractSyntaxTreeNode _parent;
 
         public LISPAbstractSyntaxTreeNode()
         {
             _token = "";
-            _children = new Stack<LISPAbstractSyntaxTreeNode>();
+            _children = new List<LISPAbstractSyntaxTreeNode>();
             _parent = null;
         }
         public LISPAbstractSyntaxTreeNode(string token)
         {
             _token = token;
-            _children = new Stack<LISPAbstractSyntaxTreeNode>();
+            _children = new List<LISPAbstractSyntaxTreeNode>();
             _parent = null;
         }
         public LISPAbstractSyntaxTreeNode(string[] syntaxTokens)
         {
-            _children = new Stack<LISPAbstractSyntaxTreeNode>();
+            _children = new List<LISPAbstractSyntaxTreeNode>();
             _parent = null;
             string currentToken;
             int nestingDepth = 0;
@@ -61,7 +61,7 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
         public LISPAbstractSyntaxTreeNode[] Children
         {
             get { return _children.ToArray(); }
-            set { _children = new Stack<LISPAbstractSyntaxTreeNode>(value); }
+            set { _children = new List<LISPAbstractSyntaxTreeNode>(value); }
         }
         public LISPAbstractSyntaxTreeNode Parent
         {
@@ -84,7 +84,7 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
             else
             {
                 newNode.Parent = this;
-                _children.Push(newNode);
+                _children.Add(newNode);
             }
         }
 
@@ -101,12 +101,6 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
                 Add(newNode);
             }
         }
-
-        public void Push(string rawToken)
-        {
-            Add(rawToken);
-        }
-
         public bool IsRoot()
         {
             if(Parent == null)
