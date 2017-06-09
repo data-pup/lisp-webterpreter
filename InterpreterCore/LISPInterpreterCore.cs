@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 // using InterpreterCore.Classes.Lisp;
-using InterpreterCore.InputParsing;
 
 namespace InterpreterCore
 {
@@ -16,7 +15,8 @@ namespace InterpreterCore
 
         public string[] ParseInputLine(string inputLine)
         {
-            return RawInputParser.ParseExpressionIntoList(inputLine);
+            return InputParsing.RawInputParser
+                .ParseExpressionIntoList(inputLine);
         }
     }
 }

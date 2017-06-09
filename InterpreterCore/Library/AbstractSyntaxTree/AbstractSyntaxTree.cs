@@ -17,6 +17,12 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
         {
             _root = new LISPAbstractSyntaxTreeNode(syntaxTokens);
         }
+        public LISPAbstractSyntaxTree(string rawInputExpression)
+        {
+            string[] syntaxTokens = InputParsing.RawInputParser
+                .ParseExpressionIntoList(rawInputExpression);
+            _root = new LISPAbstractSyntaxTreeNode(syntaxTokens);
+        }
 
         public LISPAbstractSyntaxTreeNode Root
         {
