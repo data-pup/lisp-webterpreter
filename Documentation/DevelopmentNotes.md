@@ -226,3 +226,11 @@ expression tree, and return a boolean value representing whether or not
 the expression is valid. Look for operators that do not have a sufficient
 number of operands, and for expressions with an unrecognized operator symbol.
 
+### June 09 Conclusion
+
+Print function is added to the tree class now. Other refactoring changes and
+updates were made to the console interpreter project, as well as the
+interpreter core module. Yay!
+
+Tomorrow, handle some more of the validation stuff, and write an override
+of the ToString() method that will return a nested array string representation.
