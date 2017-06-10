@@ -8,6 +8,10 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
         private static readonly string lineMarker = "├──";
         private static readonly int indentationIncrement = 4;
 
+        /// <summary>
+        /// This method will print the contents of a syntax tree and its
+        /// children to the console output.
+        /// </summary>
         public static void PrintSyntaxTree(LISPAbstractSyntaxTreeNode ASTNode)
         {
             if(ASTNode == null)

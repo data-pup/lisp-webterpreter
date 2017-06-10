@@ -215,8 +215,10 @@ need to be made with care.
 Other fun features that I would like to think about implementing:
   - Reading scripts from a file
   - Input history, navigable from the interpreter prompt using the arrow keys.
+  - Interpreter commands like .exit, .help, .info.
+  - Variable names, control flow
 
-Primary goals for tonight:
+TODO LIST:
 1. Finish adapting the test bench and console interpreter to the new abstract
 syntax tree class.
 2.  Write a validation method in the tree class that will traverse the

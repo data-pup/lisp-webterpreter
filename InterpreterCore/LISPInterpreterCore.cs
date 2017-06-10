@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// using InterpreterCore.Classes.Lisp;
+using InterpreterCore.Classes;
+using InterpreterCore.Classes.AbstractSyntaxTree;
+using InterpreterCore.InputParsing;
 
 namespace InterpreterCore
 {
@@ -15,8 +17,13 @@ namespace InterpreterCore
 
         public string[] ParseInputLine(string inputLine)
         {
-            return InputParsing.RawInputParser
-                .ParseExpressionIntoList(inputLine);
+            return RawInputParser.ParseExpressionIntoList(inputLine);
+        }
+
+        public void ParseAndPrintInputLine(string inputLine)
+        {
+            var abstractSyntaxTree = new LISPAbstractSyntaxTree(inputLine);
+            abstractSyntaxTree.Print();
         }
     }
 }
