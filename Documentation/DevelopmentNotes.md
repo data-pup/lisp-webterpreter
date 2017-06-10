@@ -223,3 +223,4 @@ syntax tree class.
 expression tree, and return a boolean value representing whether or not
 the expression is valid. Look for operators that do not have a sufficient
 number of operands, and for expressions with an unrecognized operator symbol.
+

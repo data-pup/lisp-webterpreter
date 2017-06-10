@@ -29,5 +29,11 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
             get { return _root; }
             set { _root = value; }
         }
+
+        public void Print()
+        {
+            AbstractSyntaxTreePrinter.PrintSyntaxTree(Root);
+        }
+
     }
 }
