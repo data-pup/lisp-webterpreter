@@ -187,3 +187,39 @@ However, I identified an problem with the interpreter environment when
 testing it out. Aborting upon an exception is good, but the interpreter
 itself should handle the exception and present a clean prompt.
 
+### June 09 Notes
+
+I did not add notes yesterday, but a new constructor was added to the abstract
+syntax tree class that accepts a string parameter containing a LISP expression.
+I built some simple tests that see if this is working, but some other changes
+still need to be made. Now that the input parsing code will support the string
+parameter constructor, previous logic in the high level classes in the core
+interpreter should be changed. Calls to the input parsing module should be
+removed, and a syntax tree object should be created rather than a node object.
+(Remember, the tree class will still contain a tree of nodes, exposed as a property.)
+
+The other thing I need to handle is what should happen in the constructor
+when an invalid string is given. Currently an exception is raised at runtime,
+but this is causing the rest of the system to be rather fragile. Rather, I
+think it makes sense to consider one of two approaches:
+1.  An invalid string parameter leads to a null/default object.
+2.  An invalid string parameter leads to some sort of sentinel value/state,
+  i.e. Token contains a syntax error message, children collection is empty.
+
+Error handling is something to consider. Exceptions should be thrown
+only in exceptional circumstances, and that will likely be a rather
+unexceptional circumstance in an interpreter environment. This will affect
+all of the other modules in the project, so this is a decision that will
+need to be made with care.
+
+Other fun features that I would like to think about implementing:
+  - Reading scripts from a file
+  - Input history, navigable from the interpreter prompt using the arrow keys.
+
+Primary goals for tonight:
+1. Finish adapting the test bench and console interpreter to the new abstract
+syntax tree class.
+2.  Write a validation method in the tree class that will traverse the
+expression tree, and return a boolean value representing whether or not
+the expression is valid. Look for operators that do not have a sufficient
+number of operands, and for expressions with an unrecognized operator symbol.
