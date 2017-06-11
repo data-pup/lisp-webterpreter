@@ -234,3 +234,11 @@ interpreter core module. Yay!
 
 Tomorrow, handle some more of the validation stuff, and write an override
 of the ToString() method that will return a nested array string representation.
+
+### June 11 Notes
+
+This morning I am going to work on adding operators to the interpreter.
+First, we will work on a '+' operator. IF we have time, we will work on
+other operators such as '\*', or one of the features listed above in the
+June 09 Notes.
+

@@ -34,6 +34,5 @@ namespace InterpreterCore.Classes.AbstractSyntaxTree
         {
             AbstractSyntaxTreePrinter.PrintSyntaxTree(Root);
         }
-
     }
 }
