@@ -59,22 +59,21 @@ namespace InterpreterCore.Tests
             string expectedToken = expectedTree.Token;
             string actualToken = testObject.Root.Token;
             Assert.AreEqual(expectedToken, actualToken);
-            // Check that there are an equal number of children.
+            // Check that the correct number of nodes exist in the root Children array.
             var expectedChildren = expectedTree.Children;
             LISPAbstractSyntaxTreeNode[] actualChildren = testObject.Root.Children;
             Assert.AreEqual(expectedChildren.Length, actualChildren.Length);
-            // Find the Operator token in the root node's children.
-            var operatorChildren = new List<LISPAbstractSyntaxTreeNode>();
-            foreach(var currentChild in actualChildren)
-            {
-                if(LISPAbstractSyntaxTreeNode.IsOperator(currentChild.Token))
-                {
-                    operatorChildren.Add(currentChild);
-                }
-            }
-            int expectedOperatorChildrenLength = 1;
-            int actualOperatorChildrenLength = operatorChildren.Count;
-            Assert.AreEqual(expectedOperatorChildrenLength, actualOperatorChildrenLength);
+            // Check the tokens in the root node's Children array.
+            Assert.AreEqual("2", actualChildren[0].Token);
+            Assert.AreEqual("3", actualChildren[1].Token);
+            // Examine the nested expression.
+            var operatorChild = actualChildren[2];
+            Assert.AreEqual("+", operatorChild.Token);
+            var operatorChildren = operatorChild.Children;
+            int expectedOperatorChildCount = 2;
+            Assert.AreEqual(expectedOperatorChildCount, operatorChildren.Length);
+            Assert.AreEqual("10", operatorChildren[0].Token);
+            Assert.AreEqual("5", operatorChildren[1].Token);
         }
 
     }
