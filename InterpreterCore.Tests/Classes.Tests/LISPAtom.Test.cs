@@ -35,5 +35,49 @@ namespace InterpreterCore.Tests
             testObject.Value = 5;
             Assert.AreEqual(testObject.Value, 5);
         }
+
+        [TestMethod]
+        public void LISPAtomHasWorkingAdditionOperator()
+        {
+            LISPAtom<int> leftHandAtom = new LISPAtom<int>(1);
+            LISPAtom<int> rightHandAtom = new LISPAtom<int>(2);
+            var resultAtom = leftHandAtom + rightHandAtom;
+            var actualResult = resultAtom.Value;
+            var expectedResult = 3;
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void LISPAtomHasWorkingSubtractionOperator()
+        {
+            LISPAtom<int> leftHandAtom = new LISPAtom<int>(2);
+            LISPAtom<int> rightHandAtom = new LISPAtom<int>(1);
+            var resultAtom = leftHandAtom - rightHandAtom;
+            var actualResult = resultAtom.Value;
+            var expectedResult = 1;
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void LISPAtomHasWorkingMultiplicationOperator()
+        {
+            LISPAtom<int> leftHandAtom = new LISPAtom<int>(2);
+            LISPAtom<int> rightHandAtom = new LISPAtom<int>(3);
+            var resultAtom = leftHandAtom * rightHandAtom;
+            var actualResult = resultAtom.Value;
+            var expectedResult = 6;
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void LISPAtomHasWorkingDivisionOperator()
+        {
+            LISPAtom<int> leftHandAtom = new LISPAtom<int>(6);
+            LISPAtom<int> rightHandAtom = new LISPAtom<int>(3);
+            var resultAtom = leftHandAtom / rightHandAtom;
+            var actualResult = resultAtom.Value;
+            var expectedResult = 2;
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
