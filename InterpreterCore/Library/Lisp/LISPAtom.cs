@@ -27,7 +27,7 @@ namespace InterpreterCore.Classes.Lisp
         public static LISPAtom<T> operator -(LISPAtom<T> lhs, LISPAtom<T> rhs)
         {
             if(lhs == null || rhs == null)
-                throw new NotImplementedException("'+' operator given null argument.");
+                throw new NotImplementedException("'-' operator given null argument.");
             T leftValue = lhs.Value;
             T rightValue = rhs.Value;
             T result = Difference(leftValue, rightValue);
@@ -36,7 +36,7 @@ namespace InterpreterCore.Classes.Lisp
         public static LISPAtom<T> operator *(LISPAtom<T> lhs, LISPAtom<T> rhs)
         {
             if(lhs == null || rhs == null)
-                throw new NotImplementedException("'+' operator given null argument.");
+                throw new NotImplementedException("'*' operator given null argument.");
             T leftValue = lhs.Value;
             T rightValue = rhs.Value;
             T result = Product(leftValue, rightValue);
@@ -45,7 +45,7 @@ namespace InterpreterCore.Classes.Lisp
         public static LISPAtom<T> operator /(LISPAtom<T> lhs, LISPAtom<T> rhs)
         {
             if(lhs == null || rhs == null)
-                throw new NotImplementedException("'+' operator given null argument.");
+                throw new NotImplementedException("'/' operator given null argument.");
             T leftValue = lhs.Value;
             T rightValue = rhs.Value;
             T result = Quotient(leftValue, rightValue);
